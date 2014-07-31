@@ -117,7 +117,6 @@ UITableViewDelegate
         default:
             break;
     }
-    cell.contentView.backgroundColor = [UIColor redColor];
 
     return cell;
 }
