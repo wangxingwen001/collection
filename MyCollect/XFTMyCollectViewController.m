@@ -34,11 +34,11 @@ UITableViewDelegate
     [super viewDidLoad];
     // Do any additional setup after loading the view.
  
-    self.myCollecttableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStylePlain];
+    self.myCollecttableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.myCollecttableView.delegate = self;
     self.myCollecttableView.dataSource = self;
     self.myCollecttableView.backgroundColor = [UIColor clearColor];
-    
+    self.myCollecttableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.myCollecttableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.myCollecttableView];
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];

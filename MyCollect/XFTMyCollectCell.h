@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, XFTCollectionType)
 @property(nonatomic,strong)XFTCustomLabel   *videoTimeLabel;
 @property(nonatomic,strong)UIImageView      *voiceImageView;
 @property(nonatomic,strong)XFTCustomLabel   *voiceTimeLabel;
+@property(nonatomic,strong)UIImageView      *voiceImageView1;
 @property(nonatomic,strong)UIImageView      *mapImageView;
 @property(nonatomic,strong)XFTCustomLabel   *mapDetailLabel;
 @property(nonatomic,strong)XFTCustomLabel   *mapLabel;
