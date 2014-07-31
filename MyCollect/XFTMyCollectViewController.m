@@ -139,7 +139,7 @@ UITableViewDelegate
             return 90.0f;
             break;
         case XFTLocationCollctionType:
-            return 90.0f;
+            return 110.0f;
             break;
         default:
             break;
