@@ -120,7 +120,6 @@
     self.voiceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(55, 30, 75, 32)];
     UIImage * image = [[UIImage imageNamed:@"chat_message_other"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
     [self.voiceImageView setImage:image];
-//    self.voiceImageView.image = [UIImage imageNamed:@"chat_message_other"];
     [self addSubview:self.voiceImageView];
     self.voiceTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(self.voiceImageView.frame.origin.x + 10 + 75, self.voiceImageView.center.y-10, 40, 20) TextFont:14 textColor:[UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"3\"" backGroundColor:[UIColor clearColor]];
     

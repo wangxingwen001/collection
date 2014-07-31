@@ -33,8 +33,9 @@ UITableViewDelegate
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
- 
-    self.myCollecttableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    NSLog(@"self.view.bouns is %@",NSStringFromCGRect(self.view.bounds));
+    CGRect rect = self.view.bounds;
+    self.myCollecttableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     self.myCollecttableView.delegate = self;
     self.myCollecttableView.dataSource = self;
     self.myCollecttableView.backgroundColor = [UIColor clearColor];
@@ -116,6 +117,8 @@ UITableViewDelegate
         default:
             break;
     }
+    cell.contentView.backgroundColor = [UIColor redColor];
+
     return cell;
 }
 
