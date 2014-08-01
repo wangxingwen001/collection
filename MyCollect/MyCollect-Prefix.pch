@@ -13,4 +13,13 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+typedef NS_ENUM(NSInteger, XFTCollectionType)
+{
+    XFTTextCollctionType,
+    XFTVoiceCollctionType,
+    XFTVideoCollctionType,
+    XFTPictureCollctionType,
+    XFTLocationCollctionType,
+    XFTCountType
+};
 #endif
