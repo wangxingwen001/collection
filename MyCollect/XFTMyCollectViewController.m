@@ -33,7 +33,7 @@ UITableViewDelegate
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"self.view.bouns is %@",NSStringFromCGRect(self.view.bounds));
+    
     CGRect rect = self.view.bounds;
     self.myCollecttableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     self.myCollecttableView.delegate = self;
@@ -129,16 +129,16 @@ UITableViewDelegate
             return 90.0f;
             break;
         case XFTPictureCollctionType:
-            return 132.0f;
+            return 130.0f;
             break;
         case XFTVideoCollctionType:
             return 115.0f;
             break;
         case XFTVoiceCollctionType:
-            return 90.0f;
+            return 80.0f;
             break;
         case XFTLocationCollctionType:
-            return 110.0f;
+            return 115.0f;
             break;
         default:
             break;
