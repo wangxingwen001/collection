@@ -22,7 +22,14 @@
     }
     return self;
 }
-
+- (id)initWithCollectItem:(XFTCollectItem*)item
+{
+    if(self = [super init])
+    {
+        NSLog(@"%@",item.content);
+    }
+    return self;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 wen. All rights reserved.
 //
 
-#import "XFTSuperViewController.h"
 
-@interface XFTMapViewController : XFTSuperViewController
+@interface XFTMapViewController : UIViewController
+@property(nonatomic,strong)XFTCollectItem *collectItem;
 
 @end

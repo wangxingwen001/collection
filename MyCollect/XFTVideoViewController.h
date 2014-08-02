@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 wen. All rights reserved.
 //
 
-#import "XFTSuperViewController.h"
 
-@interface XFTVideoViewController : XFTSuperViewController
+@interface XFTVideoViewController : UIViewController
+@property(nonatomic,strong)XFTCollectItem *collectItem;
 
 @end

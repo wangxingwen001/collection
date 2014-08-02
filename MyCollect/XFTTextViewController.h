@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XFTCollectItem.h"
-@interface XFTTextViewController : XFTSuperViewController
-@property(nonatomic,strong)XFTCollectItem *myCollectItem;
+@interface XFTTextViewController : UIViewController
+@property(nonatomic,strong)XFTCollectItem *collectItem;
+
 @end

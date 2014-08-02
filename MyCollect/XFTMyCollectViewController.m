@@ -201,8 +201,7 @@ DNSSwipeableCellDelegate
         {
             NSLog(@"文本");
             XFTTextViewController *textViewController = [[XFTTextViewController alloc] init];
-            textViewController.myCollectItem = collectItem;
-            NSLog(@"%@",textViewController.myCollectItem.content);
+            [textViewController setCollectItem:collectItem];
             [self.navigationController pushViewController:textViewController animated:YES];
         }
             break;
@@ -210,6 +209,7 @@ DNSSwipeableCellDelegate
         {
             NSLog(@"声音");
             XFTVoiceViewController *voiceViewController = [[XFTVoiceViewController alloc] init];
+            
             [self.navigationController pushViewController:voiceViewController animated:YES];
         }
             break;

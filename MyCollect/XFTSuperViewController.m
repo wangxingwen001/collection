@@ -13,7 +13,6 @@
 @end
 
 @implementation XFTSuperViewController
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,7 +33,6 @@
         leftBarButton.tintColor = [UIColor whiteColor];
         leftBarButton.title = @"返回";
         self.navigationItem.leftBarButtonItem = leftBarButton;
-
     }
     return self;
 }
