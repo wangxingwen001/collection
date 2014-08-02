@@ -22,7 +22,8 @@
 - (XFTTextCell*)loadCellWithCell:(XFTTextCell *)cell collectItem:(XFTCollectItem *)collectItem
 {
     cell.contentTextLabel.text = collectItem.content;
-//    [cell.headeImageView setImage:[UIImage imageNamed:collectItem.headImageUrl]];
+    [cell.headeImageView setImage:[UIImage imageNamed:collectItem.headImageUrl]];
+    cell.nickNameLabel.text = collectItem.nickName;
     return cell;
 }
 - (id)initWithFrame:(CGRect)frame

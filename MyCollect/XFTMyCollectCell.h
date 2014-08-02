@@ -11,8 +11,8 @@
 #import "DNSSwipeableCell.h"
 #import "XFTCollectItem.h"
 @interface XFTMyCollectCell : DNSSwipeableCell
-@property(nonatomic,strong)UIImageView      *headeImageView;
-@property(nonatomic,strong)XFTCustomLabel   *nickNameLabel;
-@property(nonatomic,strong)XFTCustomLabel   *collectedTimeLabel;
+@property(nonatomic,strong)UIImageView      *headeImageView;//头像
+@property(nonatomic,strong)XFTCustomLabel   *nickNameLabel;//昵称
+@property(nonatomic,strong)XFTCustomLabel   *collectedTimeLabel;//收藏时间
 
 @end

@@ -9,6 +9,6 @@
 #import "XFTCollectItem.h"
 
 @implementation XFTCollectItem
-@synthesize type,content,headImageUrl;
+@synthesize type,content,headImageUrl,nickName;
 
 @end

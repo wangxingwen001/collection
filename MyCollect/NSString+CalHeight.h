@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (CalHeight)
-
+-(CGFloat) calulateHeightForOneLyricStr_SDK:(NSString *) lrcStr  FontType:(UIFont *) fontType RowWidth:(CGFloat) rowWidth;
 @end

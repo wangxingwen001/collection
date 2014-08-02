@@ -311,15 +311,7 @@
     if (animated) {
         duration = 0.4;
     }
-    
-//    [UIView animateWithDuration:duration
-//                          delay:0
-//         usingSpringWithDamping:0.6
-//          initialSpringVelocity:0
-//                        options:UIViewAnimationOptionCurveEaseOut
-//                     animations:^{
-//                         [self layoutIfNeeded];
-//                     } completion:completion];
+
     [UIView animateWithDuration:duration animations:^{
         [self layoutIfNeeded];
     }];

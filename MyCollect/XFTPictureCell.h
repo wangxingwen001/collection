@@ -9,6 +9,6 @@
 #import "XFTMyCollectCell.h"
 
 @interface XFTPictureCell : XFTMyCollectCell
-@property(nonatomic,strong)UIImageView      *photoImageView;
-@property(nonatomic,strong)XFTCustomLabel   *photoTextLabel;
+@property(nonatomic,strong)UIImageView      *photoImageView;//图片
+@property(nonatomic,strong)XFTCustomLabel   *photoTextLabel;//图片说明
 @end

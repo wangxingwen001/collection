@@ -12,4 +12,5 @@
 @property(nonatomic,assign)NSInteger type;
 @property(nonatomic,strong)NSString *content;
 @property(nonatomic,strong)NSString *headImageUrl;
+@property(nonatomic,strong)NSString *nickName;
 @end

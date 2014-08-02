@@ -16,6 +16,7 @@
 #import <Foundation/Foundation.h>
 #import "XFTSuperViewController.h"
 #import "XFTCollectItem.h"
+#import "XFTCustomLabel.h"
 typedef NS_ENUM(NSInteger, XFTCollectionType)
 {
     XFTTextCollctionType,

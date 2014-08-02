@@ -9,7 +9,7 @@
 #import "NSString+CalHeight.h"
 
 @implementation NSString (CalHeight)
-+(CGFloat) calulateHeightForOneLyricStr_SDK:(NSString *) lrcStr  FontType:(UIFont *) fontType RowWidth:(CGFloat) rowWidth
+-(CGFloat) calulateHeightForOneLyricStr_SDK:(NSString *) lrcStr  FontType:(UIFont *) fontType RowWidth:(CGFloat) rowWidth
 {
     if (lrcStr==nil)
     {

@@ -9,7 +9,7 @@
 #import "XFTMyCollectCell.h"
 
 @interface XFTVoiceCell : XFTMyCollectCell
-@property(nonatomic,strong)UIImageView      *voiceImageView;
-@property(nonatomic,strong)XFTCustomLabel   *voiceTimeLabel;
+@property(nonatomic,strong)UIImageView      *voiceImageView;//
+@property(nonatomic,strong)XFTCustomLabel   *voiceTimeLabel;//声音时长
 @property(nonatomic,strong)UIImageView      *voiceImageView1;
 @end

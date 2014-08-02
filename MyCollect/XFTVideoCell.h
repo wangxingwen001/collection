@@ -9,8 +9,8 @@
 #import "XFTMyCollectCell.h"
 
 @interface XFTVideoCell : XFTMyCollectCell
-@property(nonatomic,strong)UIImageView      *videoImageView1;
-@property(nonatomic,strong)UIImageView      *videoImageView2;
-@property(nonatomic,strong)XFTCustomLabel   *videoTitle;
-@property(nonatomic,strong)XFTCustomLabel   *videoTimeLabel;
+@property(nonatomic,strong)UIImageView      *videoImageView1;//视频图片
+@property(nonatomic,strong)UIImageView      *videoImageView2;//视频播放
+@property(nonatomic,strong)XFTCustomLabel   *videoTitle;//视频标题
+@property(nonatomic,strong)XFTCustomLabel   *videoTimeLabel;//视频时长
 @end

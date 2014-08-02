@@ -10,6 +10,6 @@
 
 @interface XFTLocationCell : XFTMyCollectCell
 @property(nonatomic,strong)UIImageView      *mapImageView;
-@property(nonatomic,strong)XFTCustomLabel   *mapDetailLabel;
-@property(nonatomic,strong)XFTCustomLabel   *mapLabel;
+@property(nonatomic,strong)XFTCustomLabel   *mapDetailLabel;//地理位置详情
+@property(nonatomic,strong)XFTCustomLabel   *mapLabel;//地理位置
 @end
