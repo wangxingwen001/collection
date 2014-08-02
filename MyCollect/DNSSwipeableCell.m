@@ -33,7 +33,7 @@
     self.myContentView.userInteractionEnabled = YES;
     self.myContentView.clipsToBounds = YES;
     
-    self.myContentView.backgroundColor = [UIColor whiteColor];
+    self.myContentView.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
     self.myContentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.contentView addSubview:self.myContentView];

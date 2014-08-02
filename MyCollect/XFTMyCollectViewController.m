@@ -52,7 +52,7 @@ DNSSwipeableCellDelegate
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
     CGRect rect = self.view.bounds;
     self.myCollecttableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     self.myCollecttableView.delegate = self;
@@ -210,7 +210,7 @@ DNSSwipeableCellDelegate
         {
             NSLog(@"声音");
             XFTVoiceViewController *voiceViewController = [[XFTVoiceViewController alloc] init];
-            
+            voiceViewController.collectItem = collectItem;
             [self.navigationController pushViewController:voiceViewController animated:YES];
         }
             break;

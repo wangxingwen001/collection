@@ -30,8 +30,8 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"详情";
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - 64)];
-    scrollView.backgroundColor = [UIColor whiteColor];
-    scrollView.contentSize = CGSizeMake(MainSreenWidth, MainSreenHeight);
+    scrollView.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
+    scrollView.contentSize = CGSizeMake(MainSreenWidth, MainSreenHeight-44);
     scrollView.scrollEnabled = YES;
     [self.view addSubview:scrollView];
     
