@@ -10,4 +10,6 @@
 
 @interface XFTCollectItem : NSObject
 @property(nonatomic,assign)NSInteger type;
+@property(nonatomic,strong)NSString *content;
+@property(nonatomic,strong)NSString *headImageUrl;
 @end

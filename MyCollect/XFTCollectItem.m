@@ -10,4 +10,5 @@
 
 @implementation XFTCollectItem
 @synthesize type;
+
 @end

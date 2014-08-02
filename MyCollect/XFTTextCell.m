@@ -19,6 +19,12 @@
     }
     return self;
 }
+- (XFTTextCell*)loadCellWithCell:(XFTTextCell *)cell collectItem:(XFTCollectItem *)collectItem
+{
+    cell.contentTextLabel.text = collectItem.content;
+//    [cell.headeImageView setImage:[UIImage imageNamed:collectItem.headImageUrl]];
+    return cell;
+}
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

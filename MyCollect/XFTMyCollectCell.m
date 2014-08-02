@@ -17,12 +17,12 @@
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         //分割线
-        UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.5)];
-        separatorView.backgroundColor = [UIColor colorWithRed:0.871 green:0.886 blue:0.898 alpha:1];
+        UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1.0)];
+        separatorView.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1];
         [self.myContentView addSubview:separatorView];
         //头像
         self.headeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 35, 35)];
-        self.headeImageView.image = [UIImage imageNamed:@"headImage.jpg"];
+        self.headeImageView.image = [UIImage imageNamed:@"headImage"];
         [self.myContentView addSubview:self.headeImageView];
         //昵称
         self.nickNameLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(55, 7, 200, 20) TextFont:15 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:@"幸福在线" backGroundColor:[UIColor clearColor]];

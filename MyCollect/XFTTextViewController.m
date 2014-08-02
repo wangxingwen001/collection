@@ -13,12 +13,13 @@
 @end
 
 @implementation XFTTextViewController
-
+@synthesize myCollectItem;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSLog(@"%@",self.myCollectItem.content);
     }
     return self;
 }
@@ -31,8 +32,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    NSLog(@"我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。");
+    NSLog(@"%@",self.myCollectItem.content);
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - 64)];
+    scrollView.contentSize = CGSizeMake(MainSreenWidth, MainSreenHeight);
+    scrollView.scrollEnabled = YES;
+    [self.view addSubview:scrollView];
 }
 
 - (void)didReceiveMemoryWarning

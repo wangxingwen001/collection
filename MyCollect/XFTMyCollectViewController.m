@@ -64,9 +64,11 @@ DNSSwipeableCellDelegate
     [self.view addSubview:self.myCollecttableView];
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
     for (int i = 0; i < 5; i ++) {
-        XFTCollectItem *item = [[XFTCollectItem alloc] init];
-        item.type = i ;
-        [self.dataArray addObject:item];
+        XFTCollectItem *collectItem = [[XFTCollectItem alloc] init];
+        collectItem.type = i ;
+        collectItem.content = @"我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。";
+        collectItem.headImageUrl = @"headImage";
+        [self.dataArray addObject:collectItem];
     }
     self.cellsCurrentlyEditing = [[NSMutableArray alloc] initWithCapacity:0];
 }
@@ -82,9 +84,9 @@ DNSSwipeableCellDelegate
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XFTCollectItem *item = self.dataArray[indexPath.row];
+    XFTCollectItem *collectItem = self.dataArray[indexPath.row];
     XFTMyCollectCell *collectCell = nil;
-    switch (item.type) {
+    switch (collectItem.type) {
         case XFTTextCollctionType:
         {
             static NSString *cell1 = @"cell1";
@@ -94,7 +96,7 @@ DNSSwipeableCellDelegate
                 cell = [[XFTTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell1];
 
             }
-            collectCell = cell;
+            collectCell = [cell loadCellWithCell:cell collectItem:collectItem];
         }
             break;
         case XFTPictureCollctionType:
@@ -199,6 +201,8 @@ DNSSwipeableCellDelegate
         {
             NSLog(@"文本");
             XFTTextViewController *textViewController = [[XFTTextViewController alloc] init];
+            textViewController.myCollectItem = collectItem;
+            NSLog(@"%@",textViewController.myCollectItem.content);
             [self.navigationController pushViewController:textViewController animated:YES];
         }
             break;

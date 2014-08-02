@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XFTCustomLabel.h"
 #import "DNSSwipeableCell.h"
+#import "XFTCollectItem.h"
 @interface XFTMyCollectCell : DNSSwipeableCell
 @property(nonatomic,strong)UIImageView      *headeImageView;
 @property(nonatomic,strong)XFTCustomLabel   *nickNameLabel;
