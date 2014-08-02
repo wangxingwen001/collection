@@ -181,7 +181,13 @@ DNSSwipeableCellDelegate
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if(self.indexPath != indexPath)
+    {
+        [self.cellsCurrentlyEditing removeObject:self.indexPath];
+        [tableView reloadData];
+        return;
+        
+    }
     
 }
 
@@ -265,20 +271,22 @@ DNSSwipeableCellDelegate
 
 - (void)swipeableCellDidOpen:(DNSSwipeableCell *)cell
 {
-    NSLog(@"open");
+//    NSLog(@"open");
     NSIndexPath *indexPath = [self.myCollecttableView indexPathForRowAtPoint:cell.center];
-    [self.cellsCurrentlyEditing addObject:indexPath];
-    self.isOpen = YES;
+    if(self.indexPath != indexPath)
+    {
+        [self.cellsCurrentlyEditing removeObject:self.indexPath];
+        [self.myCollecttableView reloadData];
+    }
     self.indexPath = indexPath;
+    [self.cellsCurrentlyEditing addObject:indexPath];
 }
 
 - (void)swipeableCellDidClose:(DNSSwipeableCell *)cell
 {
-    NSLog(@"close");
+//    NSLog(@"close");
     NSIndexPath *indexPath = [self.myCollecttableView indexPathForRowAtPoint:cell.center];
     [self.cellsCurrentlyEditing removeObject:indexPath];
-    self.isOpen = NO;
-    self.indexPath = nil;
 }
 
 
