@@ -320,6 +320,12 @@
 //                     animations:^{
 //                         [self layoutIfNeeded];
 //                     } completion:completion];
+//    [UIView animateWithDuration:duration animations:^{
+//        [self layoutIfNeeded];
+//    }];
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self layoutIfNeeded];
+    } completion:completion];
 
 }
 

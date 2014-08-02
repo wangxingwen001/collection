@@ -30,7 +30,7 @@
         self.mapDetailLabel.numberOfLines = 2;
         [self.myContentView addSubview:self.mapDetailLabel];
         
-        self.mapLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(125, 65, 40, 20) TextFont:14 textColor:[UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"位置" backGroundColor:[UIColor clearColor]];
+        self.mapLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(125, 65, 40, 20) TextFont:14 textColor:GRAY_COLOR textAliment:NSTextAlignmentLeft text:@"位置" backGroundColor:[UIColor clearColor]];
         [self.myContentView addSubview:self.mapLabel];
     }
     return self;

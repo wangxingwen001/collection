@@ -33,7 +33,7 @@
         
         self.videoTitle = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(125, 30, 80, 20) TextFont:14 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:@"视频" backGroundColor:[UIColor clearColor]];
         [self.myContentView addSubview:self.videoTitle];
-        self.videoTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(125, 55, 80, 20) TextFont:14 textColor:[UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"40秒" backGroundColor:[UIColor clearColor]];
+        self.videoTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(125, 55, 80, 20) TextFont:14 textColor:GRAY_COLOR textAliment:NSTextAlignmentLeft text:@"40秒" backGroundColor:[UIColor clearColor]];
         [self.myContentView addSubview:self.videoTimeLabel];
     }
     return self;

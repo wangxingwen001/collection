@@ -21,7 +21,6 @@
         self.text = text;
         self.backgroundColor = bgColor;
         self.numberOfLines = 0;
-        self.adjustsFontSizeToFitWidth = YES;
         
     }
     return self;

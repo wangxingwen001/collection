@@ -13,6 +13,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "XFTSuperViewController.h"
 typedef NS_ENUM(NSInteger, XFTCollectionType)
 {
     XFTTextCollctionType,
@@ -22,4 +23,8 @@ typedef NS_ENUM(NSInteger, XFTCollectionType)
     XFTLocationCollctionType,
     XFTCountType
 };
+
+#define GRAY_COLOR [UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1]
+#define IOS7_OR_LATER    [[[UIDevice currentDevice] systemVersion]floatValue ] >= 7.0
+#define NAVIGATION_IMAGE IOS7_OR_LATER?@"ios7_nav_Image":@"ios6_nav_Image"
 #endif

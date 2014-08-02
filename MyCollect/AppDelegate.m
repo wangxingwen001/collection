@@ -14,8 +14,14 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
     XFTMyCollectViewController *myCollectViewController = [[XFTMyCollectViewController alloc] init];
-    self.window.rootViewController = myCollectViewController;
+    
+    myCollectViewController.navigationItem.title = @"我的收藏";
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myCollectViewController];
+    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:NAVIGATION_IMAGE] forBarMetrics:UIBarMetricsDefault];
+    [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],[[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0?NSForegroundColorAttributeName:UITextAttributeTextColor, nil]];
+    self.window.rootViewController = nav;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

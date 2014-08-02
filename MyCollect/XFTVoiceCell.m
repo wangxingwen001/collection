@@ -26,7 +26,7 @@
         UIImage * image = [[UIImage imageNamed:@"chat_message_other"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
         [self.voiceImageView setImage:image];
         [self.myContentView addSubview:self.voiceImageView];
-        self.voiceTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(self.voiceImageView.frame.origin.x + 10 + 75, self.voiceImageView.center.y-10, 40, 20) TextFont:14 textColor:[UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"3\"" backGroundColor:[UIColor clearColor]];
+        self.voiceTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(self.voiceImageView.frame.origin.x + 10 + 75, self.voiceImageView.center.y-10, 40, 20) TextFont:14 textColor:GRAY_COLOR textAliment:NSTextAlignmentLeft text:@"3\"" backGroundColor:[UIColor clearColor]];
         
         self.voiceImageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(45, 6, 20, 20)];
         self.voiceImageView1.image = [UIImage imageNamed:@"bottleReceiverVoiceNodePlaying"];

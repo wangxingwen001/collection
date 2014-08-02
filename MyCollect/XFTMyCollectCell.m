@@ -25,11 +25,12 @@
         self.headeImageView.image = [UIImage imageNamed:@"headImage.jpg"];
         [self.myContentView addSubview:self.headeImageView];
         //昵称
-        self.nickNameLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(55, 7, 200, 20) TextFont:15 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:@"情人节快乐" backGroundColor:[UIColor clearColor]];
+        self.nickNameLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(55, 7, 200, 20) TextFont:15 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:@"幸福在线" backGroundColor:[UIColor clearColor]];
         [self.myContentView addSubview:self.nickNameLabel];
         //收藏时间
-        self.collectedTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(240, 7, 70, 20) TextFont:15 textColor:[UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1] textAliment:NSTextAlignmentRight text:@"14-7-31" backGroundColor:[UIColor clearColor]];
+        self.collectedTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(240, 7, 70, 20) TextFont:15 textColor:GRAY_COLOR textAliment:NSTextAlignmentRight text:@"14-7-31" backGroundColor:[UIColor clearColor]];
         [self.myContentView addSubview:self.collectedTimeLabel];
+        
     }
     return self;
 }

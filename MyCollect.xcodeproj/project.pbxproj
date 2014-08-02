@@ -38,6 +38,15 @@
 		52BCDC89198B2D4000C642A5 /* XFTLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BCDC88198B2D4000C642A5 /* XFTLocationCell.m */; };
 		52D74A0F198B6AF600220631 /* NSString+CalHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D74A0E198B6AF600220631 /* NSString+CalHeight.m */; };
 		52D74A18198B79A200220631 /* DNSSwipeableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D74A17198B79A200220631 /* DNSSwipeableCell.m */; };
+		A2E73ABE198CB1EA009D1797 /* XFTTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E73ABD198CB1EA009D1797 /* XFTTextViewController.m */; };
+		A2E73AC0198CB2E5009D1797 /* ios7_nav_Image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E73ABF198CB2E5009D1797 /* ios7_nav_Image@2x.png */; };
+		A2E73AC2198CB369009D1797 /* ios6_nav_Image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E73AC1198CB369009D1797 /* ios6_nav_Image@2x.png */; };
+		A2E73AC4198CB74B009D1797 /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E73AC3198CB74B009D1797 /* back-arrow@2x.png */; };
+		A2E73AC7198CBB5A009D1797 /* XFTSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E73AC6198CBB5A009D1797 /* XFTSuperViewController.m */; };
+		A2E73AD6198CDE7E009D1797 /* XFTVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E73AD5198CDE7E009D1797 /* XFTVoiceViewController.m */; };
+		A2E73AD9198CDE8E009D1797 /* XFTVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E73AD8198CDE8E009D1797 /* XFTVideoViewController.m */; };
+		A2E73ADC198CDE9F009D1797 /* XFTPIctureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E73ADB198CDE9F009D1797 /* XFTPIctureViewController.m */; };
+		A2E73ADF198CE056009D1797 /* XFTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E73ADE198CE056009D1797 /* XFTMapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +107,21 @@
 		52D74A0E198B6AF600220631 /* NSString+CalHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CalHeight.m"; sourceTree = "<group>"; };
 		52D74A16198B79A200220631 /* DNSSwipeableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSSwipeableCell.h; sourceTree = "<group>"; };
 		52D74A17198B79A200220631 /* DNSSwipeableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSSwipeableCell.m; sourceTree = "<group>"; };
+		A2E73ABC198CB1EA009D1797 /* XFTTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTTextViewController.h; sourceTree = "<group>"; };
+		A2E73ABD198CB1EA009D1797 /* XFTTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTTextViewController.m; sourceTree = "<group>"; };
+		A2E73ABF198CB2E5009D1797 /* ios7_nav_Image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7_nav_Image@2x.png"; sourceTree = "<group>"; };
+		A2E73AC1198CB369009D1797 /* ios6_nav_Image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios6_nav_Image@2x.png"; sourceTree = "<group>"; };
+		A2E73AC3198CB74B009D1797 /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
+		A2E73AC5198CBB5A009D1797 /* XFTSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTSuperViewController.h; sourceTree = "<group>"; };
+		A2E73AC6198CBB5A009D1797 /* XFTSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTSuperViewController.m; sourceTree = "<group>"; };
+		A2E73AD4198CDE7E009D1797 /* XFTVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTVoiceViewController.h; sourceTree = "<group>"; };
+		A2E73AD5198CDE7E009D1797 /* XFTVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTVoiceViewController.m; sourceTree = "<group>"; };
+		A2E73AD7198CDE8E009D1797 /* XFTVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTVideoViewController.h; sourceTree = "<group>"; };
+		A2E73AD8198CDE8E009D1797 /* XFTVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTVideoViewController.m; sourceTree = "<group>"; };
+		A2E73ADA198CDE9F009D1797 /* XFTPIctureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTPIctureViewController.h; sourceTree = "<group>"; };
+		A2E73ADB198CDE9F009D1797 /* XFTPIctureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTPIctureViewController.m; sourceTree = "<group>"; };
+		A2E73ADD198CE056009D1797 /* XFTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTMapViewController.h; sourceTree = "<group>"; };
+		A2E73ADE198CE056009D1797 /* XFTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTMapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +237,9 @@
 		5230B5BF198A353800C89926 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A2E73AC3198CB74B009D1797 /* back-arrow@2x.png */,
+				A2E73AC1198CB369009D1797 /* ios6_nav_Image@2x.png */,
+				A2E73ABF198CB2E5009D1797 /* ios7_nav_Image@2x.png */,
 				5230B5D2198A56AD00C89926 /* bottleReceiverVoiceNodePlaying@2x.png */,
 				5230B5D0198A483700C89926 /* chat_message_other@2x.png */,
 				5230B5CA198A47A300C89926 /* playImage@2x.png */,
@@ -246,8 +273,20 @@
 		52BCDC78198B2A2900C642A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A2E73AC5198CBB5A009D1797 /* XFTSuperViewController.h */,
+				A2E73AC6198CBB5A009D1797 /* XFTSuperViewController.m */,
 				5230B5AF198A0D8B00C89926 /* XFTMyCollectViewController.h */,
 				5230B5B0198A0D8B00C89926 /* XFTMyCollectViewController.m */,
+				A2E73ABC198CB1EA009D1797 /* XFTTextViewController.h */,
+				A2E73ABD198CB1EA009D1797 /* XFTTextViewController.m */,
+				A2E73AD4198CDE7E009D1797 /* XFTVoiceViewController.h */,
+				A2E73AD5198CDE7E009D1797 /* XFTVoiceViewController.m */,
+				A2E73AD7198CDE8E009D1797 /* XFTVideoViewController.h */,
+				A2E73AD8198CDE8E009D1797 /* XFTVideoViewController.m */,
+				A2E73ADA198CDE9F009D1797 /* XFTPIctureViewController.h */,
+				A2E73ADB198CDE9F009D1797 /* XFTPIctureViewController.m */,
+				A2E73ADD198CE056009D1797 /* XFTMapViewController.h */,
+				A2E73ADE198CE056009D1797 /* XFTMapViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -356,12 +395,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E73AC2198CB369009D1797 /* ios6_nav_Image@2x.png in Resources */,
 				5230B5CD198A47A300C89926 /* mapImage@2x.png in Resources */,
 				5230B5C7198A414A00C89926 /* picture@2x.png in Resources */,
 				5230B5C1198A354700C89926 /* headImage@2x.jpg in Resources */,
 				5230B5D1198A483700C89926 /* chat_message_other@2x.png in Resources */,
 				5230B5C3198A388700C89926 /* photo@2x.png in Resources */,
 				5230B58B198A0A8E00C89926 /* InfoPlist.strings in Resources */,
+				A2E73AC4198CB74B009D1797 /* back-arrow@2x.png in Resources */,
+				A2E73AC0198CB2E5009D1797 /* ios7_nav_Image@2x.png in Resources */,
 				5230B5D3198A56AD00C89926 /* bottleReceiverVoiceNodePlaying@2x.png in Resources */,
 				5230B5CC198A47A300C89926 /* playImage@2x.png in Resources */,
 				5230B593198A0A8E00C89926 /* Images.xcassets in Resources */,
@@ -386,15 +428,21 @@
 				52D74A18198B79A200220631 /* DNSSwipeableCell.m in Sources */,
 				5230B591198A0A8E00C89926 /* AppDelegate.m in Sources */,
 				52BCDC80198B2D0600C642A5 /* XFTPictureCell.m in Sources */,
+				A2E73AC7198CBB5A009D1797 /* XFTSuperViewController.m in Sources */,
 				5230B5BE198A2E4A00C89926 /* XFTCollectItem.m in Sources */,
 				5230B5B1198A0D8B00C89926 /* XFTMyCollectViewController.m in Sources */,
 				5230B5B4198A0E2200C89926 /* XFTMyCollectCell.m in Sources */,
 				5230B58D198A0A8E00C89926 /* main.m in Sources */,
+				A2E73AD6198CDE7E009D1797 /* XFTVoiceViewController.m in Sources */,
+				A2E73ABE198CB1EA009D1797 /* XFTTextViewController.m in Sources */,
 				52BCDC83198B2D1A00C642A5 /* XFTVideoCell.m in Sources */,
+				A2E73AD9198CDE8E009D1797 /* XFTVideoViewController.m in Sources */,
+				A2E73ADF198CE056009D1797 /* XFTMapViewController.m in Sources */,
 				52BCDC86198B2D2900C642A5 /* XFTVoiceCell.m in Sources */,
 				52D74A0F198B6AF600220631 /* NSString+CalHeight.m in Sources */,
 				5230B5BA198A1F6E00C89926 /* UILabel+CalHeight.m in Sources */,
 				5230B5B7198A1A3E00C89926 /* XFTCustomLabel.m in Sources */,
+				A2E73ADC198CDE9F009D1797 /* XFTPIctureViewController.m in Sources */,
 				52BCDC7D198B2CCC00C642A5 /* XFTTextCell.m in Sources */,
 				52BCDC89198B2D4000C642A5 /* XFTLocationCell.m in Sources */,
 			);

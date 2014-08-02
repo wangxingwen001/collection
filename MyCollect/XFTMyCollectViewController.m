@@ -14,7 +14,11 @@
 #import "XFTVideoCell.h"
 #import "XFTVoiceCell.h"
 #import "XFTLocationCell.h"
-
+#import "XFTTextViewController.h"
+#import "XFTVoiceViewController.h"
+#import "XFTVideoViewController.h"
+#import "XFTPictureViewController.h"
+#import "XFTMapViewController.h"
 @interface XFTMyCollectViewController ()
 <
 UITableViewDataSource,
@@ -48,7 +52,7 @@ DNSSwipeableCellDelegate
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     CGRect rect = self.view.bounds;
     self.myCollecttableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     self.myCollecttableView.delegate = self;
@@ -150,7 +154,6 @@ DNSSwipeableCellDelegate
         [collectCell openCell:NO];
     }
     
-
     return collectCell;
 }
 
@@ -181,13 +184,59 @@ DNSSwipeableCellDelegate
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(self.indexPath != indexPath)
+    if(self.indexPath != indexPath && self.isOpen)
     {
         [self.cellsCurrentlyEditing removeObject:self.indexPath];
+        NSLog(@"isOpen=%d",self.isOpen);
+        self.isOpen = NO;
         [tableView reloadData];
         return;
-        
     }
+    
+    XFTCollectItem *collectItem = self.dataArray[indexPath.row];
+    switch (collectItem.type) {
+        case 0:
+        {
+            NSLog(@"文本");
+            XFTTextViewController *textViewController = [[XFTTextViewController alloc] init];
+            [self.navigationController pushViewController:textViewController animated:YES];
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"声音");
+            XFTVoiceViewController *voiceViewController = [[XFTVoiceViewController alloc] init];
+            [self.navigationController pushViewController:voiceViewController animated:YES];
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"视频");
+            XFTVideoViewController *videoViewController = [[XFTVideoViewController alloc] init];
+            [self.navigationController pushViewController:videoViewController animated:YES];
+            
+        }
+            break;
+        case 3:
+        {
+            NSLog(@"图片");
+            XFTPictureViewController *pictureViewController = [[XFTPictureViewController alloc] init];
+            [self.navigationController pushViewController:pictureViewController animated:YES];
+        }
+            break;
+        case 4:
+        {
+            NSLog(@"地理位置");
+            XFTMapViewController *mapViewController = [[XFTMapViewController alloc] init];
+            [self.navigationController pushViewController:mapViewController animated:YES];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
     
 }
 
@@ -205,7 +254,6 @@ DNSSwipeableCellDelegate
 
 - (NSInteger)numberOfButtonsInSwipeableCell:(DNSSwipeableCell *)cell
 {
-   
     return 2;
 }
 
@@ -264,6 +312,7 @@ DNSSwipeableCellDelegate
     if (index == 0) {
         [self.cellsCurrentlyEditing removeObject:indexPath];
         [self tableView:self.myCollecttableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:indexPath];
+        
     } else {
 //        [self showDetailForIndexPath:indexPath fromDelegateButtonAtIndex:index];
     }
@@ -273,13 +322,14 @@ DNSSwipeableCellDelegate
 {
 //    NSLog(@"open");
     NSIndexPath *indexPath = [self.myCollecttableView indexPathForRowAtPoint:cell.center];
-    if(self.indexPath != indexPath)
+    if(self.indexPath != indexPath && self.indexPath)
     {
         [self.cellsCurrentlyEditing removeObject:self.indexPath];
         [self.myCollecttableView reloadData];
     }
     self.indexPath = indexPath;
     [self.cellsCurrentlyEditing addObject:indexPath];
+    self.isOpen = YES;
 }
 
 - (void)swipeableCellDidClose:(DNSSwipeableCell *)cell
@@ -287,6 +337,7 @@ DNSSwipeableCellDelegate
 //    NSLog(@"close");
     NSIndexPath *indexPath = [self.myCollecttableView indexPathForRowAtPoint:cell.center];
     [self.cellsCurrentlyEditing removeObject:indexPath];
+    self.isOpen = NO;
 }
 
 

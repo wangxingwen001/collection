@@ -13,7 +13,7 @@
 {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        self.contentTextLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(55, 30, 255, 45) TextFont:14 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:@"情人节即将到来，祝有情人情人节快乐，没情人的破坏别人的快乐，哈哈哈！！！！" backGroundColor:[UIColor clearColor]];
+        self.contentTextLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(55, 30, 255, 45) TextFont:14 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:@"我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。" backGroundColor:[UIColor clearColor]];
         self.contentTextLabel.numberOfLines = 2;
         [self.myContentView addSubview:self.contentTextLabel];
     }
