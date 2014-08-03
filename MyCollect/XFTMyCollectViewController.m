@@ -66,11 +66,16 @@ DNSSwipeableCellDelegate
     for (int i = 0; i < 5; i ++) {
         XFTCollectItem *collectItem = [[XFTCollectItem alloc] init];
         collectItem.type = i ;
+        collectItem.imageUrl = @"pictureImage";
         collectItem.content = @"  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。";
         collectItem.nickName = @"朱莉亚罗伯茨";
         collectItem.headImageUrl = @"headImage";
         [self.dataArray addObject:collectItem];
     }
+    [self.dataArray addObjectsFromArray:self.dataArray];
+    [self.dataArray addObjectsFromArray:self.dataArray];
+    [self.dataArray addObjectsFromArray:self.dataArray];
+    [self.dataArray addObjectsFromArray:self.dataArray];
     self.cellsCurrentlyEditing = [[NSMutableArray alloc] initWithCapacity:0];
 }
 
@@ -226,6 +231,7 @@ DNSSwipeableCellDelegate
         {
             NSLog(@"图片");
             XFTPictureViewController *pictureViewController = [[XFTPictureViewController alloc] init];
+            pictureViewController.collectItem = collectItem;
             [self.navigationController pushViewController:pictureViewController animated:YES];
         }
             break;
@@ -233,6 +239,7 @@ DNSSwipeableCellDelegate
         {
             NSLog(@"地理位置");
             XFTMapViewController *mapViewController = [[XFTMapViewController alloc] init];
+            mapViewController.collectItem = collectItem;
             [self.navigationController pushViewController:mapViewController animated:YES];
             
         }

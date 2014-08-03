@@ -9,6 +9,9 @@
 #import "XFTVoiceViewController.h"
 
 @interface XFTVoiceViewController ()
+@property(nonatomic,strong) UIProgressView *progressView;
+@property(nonatomic,strong) NSTimer *timer;
+@property(nonatomic,strong) XFTCustomLabel *playTimeLabel;
 
 @end
 
@@ -55,11 +58,72 @@
     [separatorLineView setBackgroundColor:[UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1]];
     [scrollView addSubview:separatorLineView];
     
+    UIView *playerView = [[UIView alloc] initWithFrame:CGRectMake(0, 140, MainSreenWidth, 50)];
+    playerView.backgroundColor = [UIColor whiteColor];
+    [scrollView addSubview:playerView];
+    
+    UIButton *playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    playButton.tag = 100;
+    [playButton setImage:[UIImage imageNamed:@"Fav_detail_voice_play"] forState:UIControlStateNormal];
+    [playButton setImage:[UIImage imageNamed:@"Fav_detail_voice_playHL"] forState:UIControlStateHighlighted];
+    playButton.frame = CGRectMake(22, 9, 32, 32);
+    [playButton addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [playerView addSubview:playButton];
+    
+    self.playTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(54, 15, 42, 20) TextFont:13 textColor:[UIColor grayColor] textAliment:NSTextAlignmentCenter text:@"0:15" backGroundColor:[UIColor clearColor]];
+    [playerView addSubview:self.playTimeLabel];
+    
+    self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(96, 23, MainSreenWidth-111, 4)];
+    self.progressView.tintColor = [UIColor colorWithRed:0.098 green:0.725 blue:0.196 alpha:1];
+    self.progressView.progress = 0;
+    [playerView addSubview:self.progressView];
     
     
     XFTCustomLabel *collectTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(15, 215, 100, 10) TextFont:10 textColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"收藏于12天前" backGroundColor:[UIColor clearColor]];
     [scrollView addSubview:collectTimeLabel];
 }
+
+- (void)pressBtn:(UIButton *)button
+{
+    static int i=0;
+    
+    if (i%2==0)
+    {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRepeat:) userInfo:nil repeats:YES];
+        [button setImage:[UIImage imageNamed:@"Fav_detail_voice_pause"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"Fav_detail_voice_pauseHL"] forState:UIControlStateHighlighted];
+    }
+    else
+    {
+        [self.timer invalidate];
+        [button setImage:[UIImage imageNamed:@"Fav_detail_voice_play"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"Fav_detail_voice_playHL"] forState:UIControlStateHighlighted];
+    }
+    
+    i++;
+}
+
+- (void)timerRepeat:(NSTimer*)timer
+{
+    
+    static NSInteger voiceTimer = 15;
+    if(voiceTimer < 0)
+    {
+        [timer invalidate];
+        UIButton *button = (UIButton*)[self.view viewWithTag:100];
+        [button setImage:[UIImage imageNamed:@"Fav_detail_voice_play"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"Fav_detail_voice_playHL"] forState:UIControlStateHighlighted];
+        voiceTimer = 15;
+        self.playTimeLabel.text = [NSString stringWithFormat:@"%d:%d",voiceTimer/60,voiceTimer%60];
+        self.progressView.progress = 0;
+    }
+    
+    self.playTimeLabel.text = [NSString stringWithFormat:@"%d:%d",voiceTimer/60,voiceTimer%60];
+    if(voiceTimer < 14)
+    self.progressView.progress += 15/210.0;
+    voiceTimer --;
+}
+
 #pragma mark 添加标签
 - (void)tapAddTag
 {

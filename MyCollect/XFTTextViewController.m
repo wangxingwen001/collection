@@ -60,7 +60,7 @@
     XFTCustomLabel *contentLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(15, 120, MainSreenWidth-30, contentHeight) TextFont:15 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:self.collectItem.content backGroundColor:[UIColor clearColor]];
     [scrollView addSubview:contentLabel];
     
-    XFTCustomLabel *collectTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(15, contentLabel.frame.origin.y + contentLabel.frame.size.height + 20, 100, 10) TextFont:10 textColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"收藏于12天前" backGroundColor:[UIColor clearColor]];
+    XFTCustomLabel *collectTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(15, contentLabel.frame.origin.y + contentLabel.frame.size.height + 25, 100, 10) TextFont:10 textColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"收藏于12天前" backGroundColor:[UIColor clearColor]];
     [scrollView addSubview:collectTimeLabel];
     
     

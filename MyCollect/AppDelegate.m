@@ -23,6 +23,7 @@
     [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],[[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0?NSForegroundColorAttributeName:UITextAttributeTextColor, nil]];
     self.window.rootViewController = nav;
     self.window.backgroundColor = [UIColor whiteColor];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
     [self.window makeKeyAndVisible];
     return YES;
 }

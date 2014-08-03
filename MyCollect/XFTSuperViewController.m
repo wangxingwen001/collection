@@ -36,10 +36,12 @@
     }
     return self;
 }
+
 - (void)backHome
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
