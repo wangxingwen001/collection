@@ -12,7 +12,7 @@
 @property(nonatomic,strong) UIProgressView *progressView;
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,strong) XFTCustomLabel *playTimeLabel;
-
+@property(nonatomic,assign)BOOL isPlaying;
 @end
 
 @implementation XFTVoiceViewController
@@ -85,22 +85,20 @@
 
 - (void)pressBtn:(UIButton *)button
 {
-    static int i=0;
-    
-    if (i%2==0)
+    if (!self.isPlaying)
     {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRepeat:) userInfo:nil repeats:YES];
         [button setImage:[UIImage imageNamed:@"Fav_detail_voice_pause"] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"Fav_detail_voice_pauseHL"] forState:UIControlStateHighlighted];
+        self.isPlaying = YES;
     }
     else
     {
         [self.timer invalidate];
         [button setImage:[UIImage imageNamed:@"Fav_detail_voice_play"] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"Fav_detail_voice_playHL"] forState:UIControlStateHighlighted];
+        self.isPlaying = NO;
     }
-    
-    i++;
 }
 
 - (void)timerRepeat:(NSTimer*)timer
@@ -116,11 +114,12 @@
         voiceTimer = 15;
         self.playTimeLabel.text = [NSString stringWithFormat:@"%d:%d",voiceTimer/60,voiceTimer%60];
         self.progressView.progress = 0;
+        self.isPlaying = NO;
     }
     
     self.playTimeLabel.text = [NSString stringWithFormat:@"%d:%d",voiceTimer/60,voiceTimer%60];
-    if(voiceTimer < 14)
-    self.progressView.progress += 15/210.0;
+    if(voiceTimer < 15)
+    self.progressView.progress += 14/210.0;
     voiceTimer --;
 }
 
