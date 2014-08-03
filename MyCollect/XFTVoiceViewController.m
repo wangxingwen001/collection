@@ -74,6 +74,7 @@
     [playerView addSubview:self.playTimeLabel];
     
     self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(96, 23, MainSreenWidth-111, 4)];
+    if(IOS7_OR_LATER)
     self.progressView.tintColor = [UIColor colorWithRed:0.098 green:0.725 blue:0.196 alpha:1];
     self.progressView.progress = 0;
     [playerView addSubview:self.progressView];
