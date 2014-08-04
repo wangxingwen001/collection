@@ -35,18 +35,19 @@
     
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame = CGRectMake(5, navigationView.frame.size.height-40, 44, 44);
-    leftButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    leftButton.titleLabel.font = [UIFont boldSystemFontOfSize:17];
     [leftButton setTitle:@"取消" forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:leftButton];
     
     XFTCustomLabel *titleLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(49, navigationView.frame.size.height-30, MainSreenWidth-98, 20) TextFont:17 textColor:[UIColor whiteColor] textAliment:NSTextAlignmentCenter text:@"编辑标签" backGroundColor:[UIColor clearColor]];
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
     [navigationView addSubview:titleLabel];
     
     
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.frame = CGRectMake(MainSreenWidth-49, navigationView.frame.size.height-40, 44, 44);
-    rightButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:17];
     [rightButton setTitle:@"完成" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor colorWithRed:0.059 green:0.624 blue:0.039 alpha:1] forState:UIControlStateNormal];
     rightButton.userInteractionEnabled = NO;

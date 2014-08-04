@@ -62,6 +62,11 @@
     self.scrollView.scrollEnabled = YES;
     [self.view addSubview:self.scrollView];
     
+    //分割线
+    UIView *separatorView1 = [[UIView alloc] initWithFrame:CGRectMake(15, 0, 290, 1.0)];
+    separatorView1.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1];
+    [self.scrollView addSubview:separatorView1];
+    
     self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 40, 40)];
     [self.scrollView addSubview:self.headImageView];
     

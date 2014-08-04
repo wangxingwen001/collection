@@ -46,6 +46,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.view.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
     self.navigationItem.title = @"详情";
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - (IOS7_OR_LATER?64:44))];
@@ -53,6 +54,13 @@
     scrollView.contentSize = CGSizeMake(MainSreenWidth, MainSreenHeight-44);
     scrollView.scrollEnabled = YES;
     [self.view addSubview:scrollView];
+    
+    
+    
+    //分割线
+    UIView *separatorView1 = [[UIView alloc] initWithFrame:CGRectMake(15, 0, 290, 0.5)];
+    separatorView1.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1];
+    [scrollView addSubview:separatorView1];
     
     self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 40, 40)];
     [scrollView addSubview:self.headImageView];
@@ -69,7 +77,7 @@
     XFTCustomLabel *tapLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(40, 75.5, 60, 10) TextFont:10 textColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"轻触添加标签" backGroundColor:[UIColor clearColor]];
     [scrollView addSubview:tapLabel];
     
-    UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(15, 97, MainSreenWidth-30, 0.5)];
+    UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(15, 97, MainSreenWidth-30, 1.0)];
     [separatorLineView setBackgroundColor:[UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1]];
     [scrollView addSubview:separatorLineView];
     

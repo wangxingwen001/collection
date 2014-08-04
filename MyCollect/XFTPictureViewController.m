@@ -83,6 +83,11 @@
     self.scrollView.scrollEnabled = YES;
     [self.view addSubview:self.scrollView];
     
+    //分割线
+    UIView *separatorView1 = [[UIView alloc] initWithFrame:CGRectMake(15, 0, 290, 0.5)];
+    separatorView1.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1];
+    [self.scrollView addSubview:separatorView1];
+    
     self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 40, 40)];
     [self.scrollView addSubview:self.headImageView];
     
@@ -98,7 +103,7 @@
     XFTCustomLabel *tapLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(40, 75.5, 60, 10) TextFont:10 textColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"轻触添加标签" backGroundColor:[UIColor clearColor]];
     [self.scrollView addSubview:tapLabel];
     
-    UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(15, 97, MainSreenWidth-30, 0.5)];
+    UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(15, 97, MainSreenWidth-30, 1)];
     [separatorLineView setBackgroundColor:[UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1]];
     [self.scrollView addSubview:separatorLineView];
     

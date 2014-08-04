@@ -333,7 +333,7 @@
     _inputView.layer.cornerRadius = _inputView.frame.size.height * 0.5f;
     _inputView.backgroundColor = [UIColor clearColor];
     _inputView.textColor = _tagBackgroundColor;
-    
+
     CGSize contentSize = _scrollView.contentSize;
     contentSize.width = accumX + inputRect.size.width + 20.0f;
     _scrollView.contentSize = contentSize;
@@ -377,7 +377,7 @@
     [tagBtn setTitleColor:_tagForegroundColor forState:UIControlStateNormal];
     [tagBtn addTarget:self action:@selector(tagButtonDidPushed:) forControlEvents:UIControlEventTouchUpInside];
     [tagBtn setTitle:tag forState:UIControlStateNormal];
-    [tagBtn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    
     CGRect btnFrame = tagBtn.frame;
     btnFrame.origin.x = posX;
     btnFrame.origin.y = _tagGap + 6.0f;
