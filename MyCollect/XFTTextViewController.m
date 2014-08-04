@@ -8,6 +8,7 @@
 
 #import "XFTTextViewController.h"
 #import "NSString+CalHeight.h"
+#import "XFTAddTagViewController.h"
 @interface XFTTextViewController ()
 @property(nonatomic,strong) UIImageView *headImageView;
 @property(nonatomic,strong) XFTCustomLabel *nickNameLabel;
@@ -40,12 +41,13 @@
     self.contentLabel.frame = CGRectMake(15, 120, MainSreenWidth-30, contentHeight);
     self.contentLabel.text = collectModel.content;
     
-    self.collectTimeLabel.frame = CGRectMake(15, self.contentLabel.frame.origin.y + contentHeight + 25, 100, 10);
+    
     CGFloat scrollViewHeight = self.contentLabel.frame.origin.y + contentHeight + 55;
     if(scrollViewHeight > MainSreenHeight)
     {
         self.scrollView.contentSize = CGSizeMake(MainSreenWidth, scrollViewHeight);
     }
+    self.collectTimeLabel.frame = CGRectMake(15, self.scrollView.contentSize.height-20, 100, 10);
 }
 
 - (void)viewDidLoad
@@ -91,7 +93,8 @@
 #pragma mark 添加标签
 - (void)tapAddTag
 {
-    
+    XFTAddTagViewController *addTagViewController = [[XFTAddTagViewController alloc] init];
+    [self presentViewController:addTagViewController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

@@ -53,9 +53,9 @@
         imageView.frame = CGRectMake(15, scrollView_y, 290, [imageView.image calculateHeightWithWidth:290]);
         imageView.backgroundColor = [UIColor clearColor];
         imageView.contentMode =  UIViewContentModeScaleAspectFit & UIViewContentModeLeft;
-        scrollView_y += imageView.frame.size.height + 10;
+        scrollView_y += imageView.frame.size.height + PICTURE_SEPARATOR;
         [self.scrollView addSubview:imageView];
-        scrollViewHeight +=(imageView.frame.size.height + 10);
+        scrollViewHeight +=(imageView.frame.size.height + PICTURE_SEPARATOR);
         [self.imageViewArray addObject:imageView];
     }
     if(scrollViewHeight > MainSreenHeight)
@@ -67,7 +67,7 @@
         self.scrollView.contentSize = CGSizeMake(MainSreenWidth, MainSreenHeight-24);
     }
 
-    self.collectTimeLabel.frame = CGRectMake(15, self.scrollView.contentSize.height-20, MainSreenWidth-30, 10);
+    self.collectTimeLabel.frame = CGRectMake(15, self.scrollView.contentSize.height-10-PICTURE_SEPARATOR, MainSreenWidth-30, 10);
     self.collectTimeLabel.text = collectModel.collectTime;
 }
 

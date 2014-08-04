@@ -13,7 +13,7 @@
 {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        self.contentTextLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(55, 30, 255, 45) TextFont:14 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:@"我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。" backGroundColor:[UIColor clearColor]];
+        self.contentTextLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(55, 35, 255, 40) TextFont:14 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:nil backGroundColor:[UIColor clearColor]];
         self.contentTextLabel.numberOfLines = 2;
         [self.myContentView addSubview:self.contentTextLabel];
     }
@@ -21,6 +21,14 @@
 }
 - (void)updateCurrecntCellWithModel:(XFTCollectModel *)collectModel
 {
+    CGRect rect = self.contentTextLabel.frame;
+    CGFloat height = [collectModel.content calulateHeightForOneLyricStr_SDK:collectModel.content FontType:[UIFont systemFontOfSize:14] RowWidth:255];
+    if(height < 40)
+    {
+        rect.size.height = height;
+        self.contentTextLabel.frame = rect;
+    }
+    
     self.contentTextLabel.text = collectModel.content;
     [self.headeImageView setImage:[UIImage imageNamed:collectModel.headImageUrl]];
     self.nickNameLabel.text = collectModel.nickName;

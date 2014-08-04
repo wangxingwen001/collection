@@ -17,6 +17,7 @@
 #import "XFTSuperViewController.h"
 #import "XFTCollectModel.h"
 #import "XFTCustomLabel.h"
+#import "NSString+CalHeight.h"
 typedef NS_ENUM(NSInteger, XFTCollectionType)
 {
     XFTTextCollctionType,
@@ -34,6 +35,7 @@ typedef NS_ENUM(NSInteger, XFTCollectionType)
 #define MainSreenWidth [[UIScreen mainScreen] bounds].size.width
 
 #define MainSreenHeight [[UIScreen mainScreen] bounds].size.height
-
+//图片间距
+#define PICTURE_SEPARATOR 7
 
 #endif
