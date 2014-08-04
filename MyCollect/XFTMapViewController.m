@@ -56,7 +56,7 @@
     
 }
 #pragma mark 添加标签
-- (void)tapAddTag:(UIButton*)btn
+- (void)tapAddTag:(UIButton*)btnp
 {
     
 }

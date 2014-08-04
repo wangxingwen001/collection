@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XFTCollectItem.h"
+#import "XFTCollectModel.h"
 @interface XFTTextViewController : UIViewController
-@property(nonatomic,strong)XFTCollectItem *collectItem;
-
+@property(nonatomic,strong)XFTCollectModel *collectModel;
+- (void)updateViewWithCollectModel:(XFTCollectModel *)collectModel;
 @end

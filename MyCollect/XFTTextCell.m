@@ -19,12 +19,11 @@
     }
     return self;
 }
-- (XFTTextCell*)loadCellWithCell:(XFTTextCell *)cell collectItem:(XFTCollectItem *)collectItem
+- (void)updateCurrecntCellWithModel:(XFTCollectModel *)collectModel
 {
-    cell.contentTextLabel.text = collectItem.content;
-    [cell.headeImageView setImage:[UIImage imageNamed:collectItem.headImageUrl]];
-    cell.nickNameLabel.text = collectItem.nickName;
-    return cell;
+    self.contentTextLabel.text = collectModel.content;
+    [self.headeImageView setImage:[UIImage imageNamed:collectModel.headImageUrl]];
+    self.nickNameLabel.text = collectModel.nickName;
 }
 - (id)initWithFrame:(CGRect)frame
 {

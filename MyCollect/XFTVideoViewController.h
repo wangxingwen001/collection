@@ -8,6 +8,6 @@
 
 
 @interface XFTVideoViewController : UIViewController
-@property(nonatomic,strong)XFTCollectItem *collectItem;
-
+@property(nonatomic,strong)XFTCollectModel *collectModel;
 @end
+

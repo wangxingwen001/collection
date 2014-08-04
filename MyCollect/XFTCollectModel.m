@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 john. All rights reserved.
 //
 
-#import "XFTCollectItem.h"
+#import "XFTCollectModel.h"
 
-@implementation XFTCollectItem
-@synthesize type,content,headImageUrl,nickName;
+@implementation XFTCollectModel
+@synthesize type,content,headImageUrl,nickName,imageArray,collectTime;
 
 @end

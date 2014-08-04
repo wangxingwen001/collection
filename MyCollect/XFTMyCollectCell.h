@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XFTCustomLabel.h"
 #import "DNSSwipeableCell.h"
-#import "XFTCollectItem.h"
+#import "XFTCollectModel.h"
 @interface XFTMyCollectCell : DNSSwipeableCell
 @property(nonatomic,strong)UIImageView      *headeImageView;//头像
 @property(nonatomic,strong)XFTCustomLabel   *nickNameLabel;//昵称

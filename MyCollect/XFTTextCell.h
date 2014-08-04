@@ -10,5 +10,5 @@
 
 @interface XFTTextCell : XFTMyCollectCell
 @property(nonatomic,strong)XFTCustomLabel   *contentTextLabel;//文本标签
-- (XFTTextCell*)loadCellWithCell:(XFTTextCell*)cell collectItem:(XFTCollectItem*)collectItem;
+- (void)updateCurrecntCellWithModel:(XFTCollectModel*)collectModel;
 @end

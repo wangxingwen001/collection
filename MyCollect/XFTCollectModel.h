@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface XFTCollectItem : NSObject
+@interface XFTCollectModel : NSObject
 @property(nonatomic,assign)NSInteger type;
 @property(nonatomic,strong)NSString *content;
 @property(nonatomic,strong)NSString *headImageUrl;
 @property(nonatomic,strong)NSString *nickName;
 @property(nonatomic,strong)NSString *imageUrl;
+@property(nonatomic,strong)NSString *collectTime;
+@property(nonatomic,strong)NSMutableArray *imageArray;
 @end

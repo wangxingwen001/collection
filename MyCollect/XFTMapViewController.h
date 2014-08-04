@@ -8,6 +8,5 @@
 
 #import "NSString+CalHeight.h"
 @interface XFTMapViewController : UIViewController
-@property(nonatomic,strong)XFTCollectItem *collectItem;
-
+@property(nonatomic,strong)XFTCollectModel *collectModel;
 @end

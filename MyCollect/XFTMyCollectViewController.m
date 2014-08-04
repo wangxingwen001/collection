@@ -8,7 +8,7 @@
 
 #import "XFTMyCollectViewController.h"
 #import "XFTMyCollectCell.h"
-#import "XFTCollectItem.h"
+#import "XFTCollectModel.h"
 #import "XFTTextCell.h"
 #import "XFTPictureCell.h"
 #import "XFTVideoCell.h"
@@ -19,13 +19,15 @@
 #import "XFTVideoViewController.h"
 #import "XFTPictureViewController.h"
 #import "XFTMapViewController.h"
-@interface XFTMyCollectViewController ()
-<
-UITableViewDataSource,
-UITableViewDelegate,
-DNSSwipeableCellDataSource,
-DNSSwipeableCellDelegate
->
+@interface XFTMyCollectViewController ()<UITableViewDataSource,UITableViewDelegate,DNSSwipeableCellDataSource,DNSSwipeableCellDelegate>
+{
+    XFTTextViewController * _textVC;
+    XFTVoiceViewController *_voiceVC;
+    XFTVideoViewController *_videoVC;
+    XFTPictureViewController * _pictureVC;
+    XFTMapViewController * _mapVC;
+    
+}
 @property(nonatomic,strong)UITableView *myCollecttableView;
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *cellsCurrentlyEditing;
@@ -35,6 +37,7 @@ DNSSwipeableCellDelegate
 @property (nonatomic, strong) NSArray *imageNames;
 @property(nonatomic,assign)BOOL isOpen;
 @property(nonatomic,strong)NSIndexPath *indexPath;
+
 @end
 
 @implementation XFTMyCollectViewController
@@ -47,12 +50,20 @@ DNSSwipeableCellDelegate
     }
     return self;
 }
-
+- (void)startEdit:(UIBarButtonItem*)barButtonItem
+{
+    NSLog(@"开始编辑");
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(startEdit:)];
+    rightBarButtonItem .tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+    
+    
     CGRect rect = self.view.bounds;
     self.myCollecttableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     self.myCollecttableView.delegate = self;
@@ -64,18 +75,21 @@ DNSSwipeableCellDelegate
     [self.view addSubview:self.myCollecttableView];
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
     for (int i = 0; i < 5; i ++) {
-        XFTCollectItem *collectItem = [[XFTCollectItem alloc] init];
-        collectItem.type = i ;
-        collectItem.imageUrl = @"pictureImage";
-        collectItem.content = @"  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。";
-        collectItem.nickName = @"朱莉亚罗伯茨";
-        collectItem.headImageUrl = @"headImage";
-        [self.dataArray addObject:collectItem];
+        XFTCollectModel *collectModel = [[XFTCollectModel alloc] init];
+        collectModel.imageArray = [[NSMutableArray alloc]initWithCapacity:0];
+        for(int i = 0; i < 10;i ++)
+        {
+            [collectModel.imageArray addObject:[NSString stringWithFormat:@"%d",i]];
+        }
+        
+        collectModel.type = i ;
+        collectModel.imageUrl = @"pictureImage";
+        collectModel.content = @"  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。 我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。\n  我喜欢乡村的天是那么蓝，水是那么清，树是那么绿，山是连绵不断的青；还喜欢那里夜晚的寂静；晚上除了几声狗叫，很少听到其他的噪杂声；那里的夜晚月亮是那么亮，星星也比城市的多、亮。";
+        collectModel.nickName = @"朱莉亚罗伯茨";
+        collectModel.headImageUrl = @"headImage";
+        collectModel.collectTime = @"收藏于12天前";
+        [self.dataArray addObject:collectModel];
     }
-    [self.dataArray addObjectsFromArray:self.dataArray];
-    [self.dataArray addObjectsFromArray:self.dataArray];
-    [self.dataArray addObjectsFromArray:self.dataArray];
-    [self.dataArray addObjectsFromArray:self.dataArray];
     self.cellsCurrentlyEditing = [[NSMutableArray alloc] initWithCapacity:0];
 }
 
@@ -90,9 +104,9 @@ DNSSwipeableCellDelegate
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XFTCollectItem *collectItem = self.dataArray[indexPath.row];
+    XFTCollectModel *collectModel = self.dataArray[indexPath.row];
     XFTMyCollectCell *collectCell = nil;
-    switch (collectItem.type) {
+    switch (collectModel.type) {
         case XFTTextCollctionType:
         {
             static NSString *cell1 = @"cell1";
@@ -102,7 +116,8 @@ DNSSwipeableCellDelegate
                 cell = [[XFTTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell1];
 
             }
-            collectCell = [cell loadCellWithCell:cell collectItem:collectItem];
+            [cell updateCurrecntCellWithModel:collectModel];
+            collectCell = cell;
         }
             break;
         case XFTPictureCollctionType:
@@ -167,7 +182,7 @@ DNSSwipeableCellDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    XFTCollectItem *item = self.dataArray[indexPath.row];
+    XFTCollectModel *item = self.dataArray[indexPath.row];
     switch (item.type) {
         case XFTTextCollctionType:
             return 90.0f;
@@ -197,26 +212,39 @@ DNSSwipeableCellDelegate
         [self.cellsCurrentlyEditing removeObject:self.indexPath];
         NSLog(@"isOpen=%d",self.isOpen);
         self.isOpen = NO;
-        [tableView reloadData];
+        DNSSwipeableCell *cell = (DNSSwipeableCell*)[tableView cellForRowAtIndexPath:self.indexPath];
+        [cell closeCell:YES];
         return;
     }
     
-    XFTCollectItem *collectItem = self.dataArray[indexPath.row];
-    switch (collectItem.type) {
+    XFTCollectModel *collectModel = self.dataArray[indexPath.row];
+    switch (collectModel.type) {
         case 0:
         {
             NSLog(@"文本");
-            XFTTextViewController *textViewController = [[XFTTextViewController alloc] init];
-            [textViewController setCollectItem:collectItem];
-            [self.navigationController pushViewController:textViewController animated:YES];
+            if (!_textVC) {
+                _textVC = [[XFTTextViewController alloc] init];
+                _textVC.collectModel = collectModel;
+            }
+            else{
+                [_textVC updateViewWithCollectModel:collectModel];
+            }
+            [self.navigationController pushViewController:_textVC animated:YES];
         }
             break;
         case 1:
         {
             NSLog(@"声音");
-            XFTVoiceViewController *voiceViewController = [[XFTVoiceViewController alloc] init];
-            voiceViewController.collectItem = collectItem;
-            [self.navigationController pushViewController:voiceViewController animated:YES];
+            if(!_voiceVC)
+            {
+                _voiceVC = [[XFTVoiceViewController alloc] init];
+                _voiceVC.collectModel = collectModel;
+            }
+            else
+            {
+                [_voiceVC updateViewWithCollectModel:collectModel];
+            }
+            [self.navigationController pushViewController:_voiceVC animated:YES];
         }
             break;
         case 2:
@@ -230,16 +258,23 @@ DNSSwipeableCellDelegate
         case 3:
         {
             NSLog(@"图片");
-            XFTPictureViewController *pictureViewController = [[XFTPictureViewController alloc] init];
-            pictureViewController.collectItem = collectItem;
-            [self.navigationController pushViewController:pictureViewController animated:YES];
+            if(!_pictureVC)
+            {
+                _pictureVC = [[XFTPictureViewController alloc] init];
+                _pictureVC.collectModel = collectModel;
+            }
+            else
+            {
+                [_pictureVC updateViewWithCollectModel:collectModel];
+            }
+            [self.navigationController pushViewController:_pictureVC animated:YES];
         }
             break;
         case 4:
         {
             NSLog(@"地理位置");
             XFTMapViewController *mapViewController = [[XFTMapViewController alloc] init];
-            mapViewController.collectItem = collectItem;
+            mapViewController.collectModel = collectModel;
             [self.navigationController pushViewController:mapViewController animated:YES];
             
         }
@@ -323,6 +358,8 @@ DNSSwipeableCellDelegate
     NSLog(@"%@",indexPath);
     if (index == 0) {
         [self.cellsCurrentlyEditing removeObject:indexPath];
+        self.isOpen = NO;
+        
         [self tableView:self.myCollecttableView commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:indexPath];
         
     } else {
@@ -334,11 +371,14 @@ DNSSwipeableCellDelegate
 {
 //    NSLog(@"open");
     NSIndexPath *indexPath = [self.myCollecttableView indexPathForRowAtPoint:cell.center];
-    if(self.indexPath != indexPath && self.indexPath)
+    if(self.indexPath != indexPath && self.indexPath && self.isOpen)
     {
         [self.cellsCurrentlyEditing removeObject:self.indexPath];
-        [self.myCollecttableView reloadData];
+        DNSSwipeableCell *cell = (DNSSwipeableCell*)[self.myCollecttableView cellForRowAtIndexPath:self.indexPath];
+        [cell closeCell:YES];
+        
     }
+   
     self.indexPath = indexPath;
     [self.cellsCurrentlyEditing addObject:indexPath];
     self.isOpen = YES;
