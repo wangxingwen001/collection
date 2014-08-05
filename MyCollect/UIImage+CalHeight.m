@@ -18,4 +18,5 @@
     }
     return width /(self.size.width/self.size.height);
 }
+
 @end

@@ -126,6 +126,7 @@
         {
             [_tagsMade addObject:tag];
         }
+        
     }
     
     [self reArrangeSubViews];

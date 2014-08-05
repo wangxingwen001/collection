@@ -385,7 +385,6 @@
         [self.cellsCurrentlyEditing removeObject:self.indexPath];
         DNSSwipeableCell *cell = (DNSSwipeableCell*)[self.myCollecttableView cellForRowAtIndexPath:self.indexPath];
         [cell closeCell:YES];
-        
     }
    
     self.indexPath = indexPath;

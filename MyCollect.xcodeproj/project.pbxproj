@@ -30,6 +30,9 @@
 		5230B5CD198A47A300C89926 /* mapImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5230B5CB198A47A300C89926 /* mapImage@2x.png */; };
 		5230B5D1198A483700C89926 /* chat_message_other@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5230B5D0198A483700C89926 /* chat_message_other@2x.png */; };
 		5230B5D3198A56AD00C89926 /* bottleReceiverVoiceNodePlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5230B5D2198A56AD00C89926 /* bottleReceiverVoiceNodePlaying@2x.png */; };
+		5245420A1990673600D4E8EE /* XFTTagWriteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 524542091990673600D4E8EE /* XFTTagWriteView.m */; };
+		5245420D199072A200D4E8EE /* MyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5245420C199072A200D4E8EE /* MyLayer.m */; };
+		524542101990795E00D4E8EE /* NSString+CalWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5245420F1990795E00D4E8EE /* NSString+CalWidth.m */; };
 		52ABAC7E198F2E2300CF1C7D /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52ABAC79198F2E2300CF1C7D /* 1@2x.png */; };
 		52ABAC7F198F2E2300CF1C7D /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52ABAC7A198F2E2300CF1C7D /* 2@2x.png */; };
 		52ABAC80198F2E2300CF1C7D /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52ABAC7B198F2E2300CF1C7D /* 3@2x.png */; };
@@ -113,6 +116,12 @@
 		5230B5CB198A47A300C89926 /* mapImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapImage@2x.png"; sourceTree = "<group>"; };
 		5230B5D0198A483700C89926 /* chat_message_other@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_message_other@2x.png"; sourceTree = "<group>"; };
 		5230B5D2198A56AD00C89926 /* bottleReceiverVoiceNodePlaying@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottleReceiverVoiceNodePlaying@2x.png"; sourceTree = "<group>"; };
+		524542081990673600D4E8EE /* XFTTagWriteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTTagWriteView.h; sourceTree = "<group>"; };
+		524542091990673600D4E8EE /* XFTTagWriteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTTagWriteView.m; sourceTree = "<group>"; };
+		5245420B199072A200D4E8EE /* MyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayer.h; sourceTree = "<group>"; };
+		5245420C199072A200D4E8EE /* MyLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayer.m; sourceTree = "<group>"; };
+		5245420E1990795E00D4E8EE /* NSString+CalWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CalWidth.h"; sourceTree = "<group>"; };
+		5245420F1990795E00D4E8EE /* NSString+CalWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CalWidth.m"; sourceTree = "<group>"; };
 		52ABAC79198F2E2300CF1C7D /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
 		52ABAC7A198F2E2300CF1C7D /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
 		52ABAC7B198F2E2300CF1C7D /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
@@ -361,6 +370,8 @@
 			children = (
 				5230B5B5198A1A3E00C89926 /* XFTCustomLabel.h */,
 				5230B5B6198A1A3E00C89926 /* XFTCustomLabel.m */,
+				524542081990673600D4E8EE /* XFTTagWriteView.h */,
+				524542091990673600D4E8EE /* XFTTagWriteView.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -374,6 +385,8 @@
 				52D74A0E198B6AF600220631 /* NSString+CalHeight.m */,
 				52ABAC8B198F358A00CF1C7D /* UIImage+CalHeight.h */,
 				52ABAC8C198F358A00CF1C7D /* UIImage+CalHeight.m */,
+				5245420E1990795E00D4E8EE /* NSString+CalWidth.h */,
+				5245420F1990795E00D4E8EE /* NSString+CalWidth.m */,
 			);
 			name = Categorys;
 			sourceTree = "<group>";
@@ -385,6 +398,8 @@
 				52D74A17198B79A200220631 /* DNSSwipeableCell.m */,
 				52D1390F198F97DA00E2786F /* HKKTagWriteView.h */,
 				52D13910198F97DA00E2786F /* HKKTagWriteView.m */,
+				5245420B199072A200D4E8EE /* MyLayer.h */,
+				5245420C199072A200D4E8EE /* MyLayer.m */,
 			);
 			name = Libary;
 			sourceTree = "<group>";
@@ -512,10 +527,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5245420A1990673600D4E8EE /* XFTTagWriteView.m in Sources */,
 				52D74A18198B79A200220631 /* DNSSwipeableCell.m in Sources */,
 				5230B591198A0A8E00C89926 /* AppDelegate.m in Sources */,
 				52BCDC80198B2D0600C642A5 /* XFTPictureCell.m in Sources */,
 				A2E73AC7198CBB5A009D1797 /* XFTSuperViewController.m in Sources */,
+				524542101990795E00D4E8EE /* NSString+CalWidth.m in Sources */,
 				5230B5BE198A2E4A00C89926 /* XFTCollectModel.m in Sources */,
 				5230B5B1198A0D8B00C89926 /* XFTMyCollectViewController.m in Sources */,
 				5230B5B4198A0E2200C89926 /* XFTMyCollectCell.m in Sources */,
@@ -527,6 +544,7 @@
 				52D1390E198F82F700E2786F /* XFTAddTagViewController.m in Sources */,
 				A2E73AD9198CDE8E009D1797 /* XFTVideoViewController.m in Sources */,
 				A2E73ADF198CE056009D1797 /* XFTMapViewController.m in Sources */,
+				5245420D199072A200D4E8EE /* MyLayer.m in Sources */,
 				52ABAC8D198F358A00CF1C7D /* UIImage+CalHeight.m in Sources */,
 				52BCDC86198B2D2900C642A5 /* XFTVoiceCell.m in Sources */,
 				52D74A0F198B6AF600220631 /* NSString+CalHeight.m in Sources */,
