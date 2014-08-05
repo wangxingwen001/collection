@@ -9,6 +9,7 @@
 #import "XFTTagWriteView.h"
 #import "MyLayer.h"
 #import "NSString+CalWidth.h"
+#import "XFTButton.h"
 @interface XFTTagWriteView()<UITextFieldDelegate,UIScrollViewDelegate>
 @property(nonatomic,strong) UIScrollView *inputScrollView;
 @property(nonatomic,strong) UIScrollView *showTagScrollView;
@@ -31,6 +32,7 @@
         self.tagMadeArray = [[NSMutableArray alloc] initWithCapacity:self.collectTagArray.count];
         
         self.tagViews = [[NSMutableArray alloc] initWithCapacity:0];
+        
         self.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
         self.inputScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MainSreenWidth, 50)];
         self.inputScrollView.tag = 10;
@@ -106,7 +108,7 @@
         CGFloat tag_X = 15,tag_Y = 10;
         if(self.tagViews.count > 0)
         {
-            UIButton *tagBtn = [self.tagViews lastObject];
+            XFTButton *tagBtn = [self.tagViews lastObject];
             tag_X = tagBtn.frame.origin.x + tagBtn.frame.size.width;
             tag_Y = tagBtn.frame.origin.y;
         }
@@ -114,7 +116,7 @@
         {
             if(self.tagViews.count > 0)
             {
-                UIButton *tagBtn = [self.tagViews lastObject];
+                XFTButton *tagBtn = [self.tagViews lastObject];
                 tag_X = tagBtn.frame.origin.x + tagBtn.frame.size.width + 7.5;
                 if(tag_X + [tag calculateWidthForFont:self.font]+20 > MainSreenWidth - 15)
                 {
@@ -122,10 +124,13 @@
                     tag_X = 15;
                 }
             }
-            UIButton *tagBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            XFTButton *tagBtn = [XFTButton buttonWithType:UIButtonTypeCustom];
+            UIImage * image = [[UIImage imageNamed:@"Fav_Green_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            UIImage * image_HL = [[UIImage imageNamed:@"Fav_Green_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            [tagBtn setBackgroundImage:image forState:UIControlStateNormal];
+            [tagBtn setBackgroundImage:image_HL forState:UIControlStateHighlighted];
             tagBtn.titleLabel.font = self.font;
             tagBtn.frame = CGRectMake(tag_X, tag_Y, [tag calculateWidthForFont:self.font]+20, 25);
-            [MyLayer RoundedWithBorder:tagBtn cornerRadius:12.5 borderWidth:0.5 borderColor:self.tagForegroundColor masksToBounds:YES];
             [tagBtn setTitle:tag forState:UIControlStateNormal];
             [tagBtn setTitleColor:self.tagForegroundColor forState:UIControlStateNormal];
             [self.inputScrollView addSubview:tagBtn];
@@ -140,7 +145,7 @@
 - (void)layoutInputAndScroll
 {
     
-    UIButton *btn = [self.tagViews lastObject];
+    XFTButton *btn = [self.tagViews lastObject];
     CGRect fram = self.inputTextField.frame;
     CGFloat x = btn.frame.origin.x + btn.frame.size.width + 15;
     CGFloat y = btn.frame.origin.y;
@@ -180,7 +185,6 @@
     NSMutableArray *newTags = [[NSMutableArray alloc] initWithCapacity:0];
     if(result.count == 0)
     {
-        [self.inputTagArray addObject:tag];
         [newTags addObject:tag];
         [self updateTag:newTags];
     }
@@ -256,7 +260,7 @@
     }
     if(self.tagViews.count > 0)
     {
-        UIButton *lastBtn = [self.tagViews lastObject];
+        XFTButton *lastBtn = [self.tagViews lastObject];
         
         if(width + 15 > MainSreenWidth - (lastBtn.frame.origin.x + lastBtn.frame.size.width + 15))
         {
@@ -298,7 +302,7 @@
     }
     if(self.myTagViews.count>0)
     {
-        for(UIButton *btn in self.myTagViews)
+        for(XFTButton *btn in self.myTagViews)
         {
             [btn removeFromSuperview];
         }
@@ -309,9 +313,9 @@
     {
         if(self.myTagViews.count > 0)
         {
-            UIButton *lastBtn = [self.myTagViews lastObject];
+            XFTButton *lastBtn = [self.myTagViews lastObject];
             x = lastBtn.frame.origin.x + lastBtn.frame.size.width + 10;
-            if(x + [tag calculateWidthForFont:self.font] + 10 > MainSreenWidth - x )
+            if(x + [tag calculateWidthForFont:self.font]+20 > MainSreenWidth - 15)
             {
                 x = 15;
                 y = lastBtn.frame.origin.y + lastBtn.frame.size.height + 10;
@@ -320,59 +324,82 @@
         NSArray *result = [self.inputTagArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF == %@",tag]];
         
         CGFloat width = [tag calculateWidthForFont:self.font] + 20;
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        XFTButton *btn = [XFTButton buttonWithType:UIButtonTypeCustom];
+        
         btn.frame = CGRectMake(x, y, width, 25);
         [btn setTitle:tag forState:UIControlStateNormal];
-        btn.backgroundColor = [UIColor whiteColor];
-        UIColor *bolderColor = nil;
         if(result.count == 0)
         {
+            UIImage *image = [[UIImage imageNamed:@"Fav_Gray_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            [btn setBackgroundImage:image forState:UIControlStateNormal];
+            UIImage * image_HL = [[UIImage imageNamed:@"Fav_Gray_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            [btn setBackgroundImage:image_HL forState:UIControlStateHighlighted];
             [btn setTitleColor:self.myTagColor forState:UIControlStateNormal];
-            bolderColor = [UIColor colorWithRed:0.906 green:0.902 blue:0.906 alpha:1];
-            btn.selected = NO;
+            btn.select = NO;
         }
         else
         {
+            UIImage * image = [[UIImage imageNamed:@"Fav_Green_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            [btn setBackgroundImage:image forState:UIControlStateNormal];
+            UIImage * image_HL = [[UIImage imageNamed:@"Fav_Green_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            [btn setBackgroundImage:image_HL forState:UIControlStateHighlighted];
             [btn setTitleColor:self.tagForegroundColor forState:UIControlStateNormal];
-            bolderColor = self.tagForegroundColor;
-            btn.selected = YES;
+            btn.select = YES;
         }
+        
+       
         [btn addTarget:self action:@selector(tagBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [MyLayer RoundedWithBorder:btn cornerRadius:12.5 borderWidth:0.5 borderColor:bolderColor masksToBounds:YES];
+        
         [self.showTagScrollView addSubview:btn];
         [self.myTagViews addObject:btn];
         
     }
 }
-- (void)tagBtnClick:(UIButton*)btn
+- (void)tagBtnClick:(XFTButton*)btn
 {
     [self showKeyBoard:NO];
     UIColor *bolderColor = nil;
-    if(btn.selected)
+    if(btn.select)
     {
+        UIImage *image = [[UIImage imageNamed:@"Fav_Gray_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        [btn setBackgroundImage:image forState:UIControlStateNormal];
+        UIImage * image_HL = [[UIImage imageNamed:@"Fav_Gray_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        [btn setBackgroundImage:image_HL forState:UIControlStateHighlighted];
         [btn setTitleColor:self.myTagColor forState:UIControlStateNormal];
-        bolderColor = [UIColor colorWithRed:0.906 green:0.902 blue:0.906 alpha:1];
-        btn.selected = NO;
+        btn.select = NO;
         [self deleteTag:btn.titleLabel.text];
     }
     else
     {
+        UIImage * image = [[UIImage imageNamed:@"Fav_Green_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        [btn setBackgroundImage:image forState:UIControlStateNormal];
+        UIImage * image_HL = [[UIImage imageNamed:@"Fav_Green_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        [btn setBackgroundImage:image_HL forState:UIControlStateHighlighted];
         [btn setTitleColor:self.tagForegroundColor forState:UIControlStateNormal];
         bolderColor = self.tagForegroundColor;
-        btn.selected = YES;
+        btn.select = YES;
         [self addTagWith:btn.titleLabel.text];
     }
-    [MyLayer RoundedWithBorder:btn cornerRadius:12.5 borderWidth:0.5 borderColor:bolderColor masksToBounds:YES];
+//    [MyLayer RoundedWithBorder:btn cornerRadius:12.5 borderWidth:0.5 borderColor:bolderColor masksToBounds:YES];
 }
 
 - (void)deleteTag:(NSString*)tag
 {
-    NSInteger index = [self.inputTagArray indexOfObject:tag];
-    UIButton *btn = [self.tagViews objectAtIndex:index];
-    [btn removeFromSuperview];
-    [self.inputTagArray removeObjectAtIndex:index];
-    [self.tagViews removeObjectAtIndex:index];
-    [self reLayoutTagsWithIndex:index];
+    for(NSString *str in self.inputTagArray)
+    {
+        if([str isEqualToString:tag])
+        {
+            NSInteger index = [self.inputTagArray indexOfObject:str];
+            XFTButton *btn = [self.tagViews objectAtIndex:index];
+            [btn removeFromSuperview];
+            [self.inputTagArray removeObjectAtIndex:index];
+            [self.tagViews removeObjectAtIndex:index];
+            [self reLayoutTagsWithIndex:index];
+            break;
+        }
+    }
+    
+    
 }
 - (void)reLayoutTagsWithIndex:(NSInteger)index
 {
