@@ -50,7 +50,7 @@
     rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:17];
     [rightButton setTitle:@"完成" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor colorWithRed:0.059 green:0.741 blue:0.008 alpha:1] forState:UIControlStateNormal];
-    rightButton.userInteractionEnabled = NO;
+    rightButton.userInteractionEnabled = YES;
     [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:rightButton];
     
@@ -65,14 +65,21 @@
     
     [self.view addSubview:self.tagWriteView];
 }
+//返回按钮
 - (void)leftButtonClick:(UIButton*)btn
 {
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.tagWriteView removeNotication:UITextFieldTextDidChangeNotification];
 }
+//点击完成按钮
 - (void)rightButtonClick:(UIButton*)btn
 {
-    
+    NSArray *tagArray = self.tagWriteView.inputTagArray;
+    for(NSString *str in tagArray)
+    {
+        NSLog(@"%@",str);
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

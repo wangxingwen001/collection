@@ -33,6 +33,8 @@
 		5245420A1990673600D4E8EE /* XFTTagWriteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 524542091990673600D4E8EE /* XFTTagWriteView.m */; };
 		5245420D199072A200D4E8EE /* MyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5245420C199072A200D4E8EE /* MyLayer.m */; };
 		524542101990795E00D4E8EE /* NSString+CalWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5245420F1990795E00D4E8EE /* NSString+CalWidth.m */; };
+		526C69991991D49700151FD1 /* XFTMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C69981991D49700151FD1 /* XFTMenuItem.m */; };
+		526C699C1991D61400151FD1 /* XFTMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C699B1991D61400151FD1 /* XFTMenuController.m */; };
 		52ABAC7E198F2E2300CF1C7D /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52ABAC79198F2E2300CF1C7D /* 1@2x.png */; };
 		52ABAC7F198F2E2300CF1C7D /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52ABAC7A198F2E2300CF1C7D /* 2@2x.png */; };
 		52ABAC80198F2E2300CF1C7D /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52ABAC7B198F2E2300CF1C7D /* 3@2x.png */; };
@@ -131,6 +133,10 @@
 		5245420C199072A200D4E8EE /* MyLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayer.m; sourceTree = "<group>"; };
 		5245420E1990795E00D4E8EE /* NSString+CalWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CalWidth.h"; sourceTree = "<group>"; };
 		5245420F1990795E00D4E8EE /* NSString+CalWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CalWidth.m"; sourceTree = "<group>"; };
+		526C69971991D49700151FD1 /* XFTMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTMenuItem.h; sourceTree = "<group>"; };
+		526C69981991D49700151FD1 /* XFTMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTMenuItem.m; sourceTree = "<group>"; };
+		526C699A1991D61400151FD1 /* XFTMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFTMenuController.h; sourceTree = "<group>"; };
+		526C699B1991D61400151FD1 /* XFTMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFTMenuController.m; sourceTree = "<group>"; };
 		52ABAC79198F2E2300CF1C7D /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
 		52ABAC7A198F2E2300CF1C7D /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
 		52ABAC7B198F2E2300CF1C7D /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
@@ -401,6 +407,10 @@
 				524542091990673600D4E8EE /* XFTTagWriteView.m */,
 				A23F12AA19913BE600F80EFF /* XFTButton.h */,
 				A23F12AB19913BE600F80EFF /* XFTButton.m */,
+				526C69971991D49700151FD1 /* XFTMenuItem.h */,
+				526C69981991D49700151FD1 /* XFTMenuItem.m */,
+				526C699A1991D61400151FD1 /* XFTMenuController.h */,
+				526C699B1991D61400151FD1 /* XFTMenuController.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -580,7 +590,9 @@
 				5230B58D198A0A8E00C89926 /* main.m in Sources */,
 				A2E73AD6198CDE7E009D1797 /* XFTVoiceViewController.m in Sources */,
 				A2E73ABE198CB1EA009D1797 /* XFTTextViewController.m in Sources */,
+				526C699C1991D61400151FD1 /* XFTMenuController.m in Sources */,
 				52BCDC83198B2D1A00C642A5 /* XFTVideoCell.m in Sources */,
+				526C69991991D49700151FD1 /* XFTMenuItem.m in Sources */,
 				52D13911198F97DA00E2786F /* HKKTagWriteView.m in Sources */,
 				52D1390E198F82F700E2786F /* XFTAddTagViewController.m in Sources */,
 				A2E73AD9198CDE8E009D1797 /* XFTVideoViewController.m in Sources */,
@@ -713,14 +725,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jinsheng Du (652HK6SNFV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: XUE LI (A8LHWTB34E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinsheng Du (652HK6SNFV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyCollect/MyCollect-Prefix.pch";
 				INFOPLIST_FILE = "MyCollect/MyCollect-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2C5EE626-4525-4CEB-A154-75204CFA9B98";
+				PROVISIONING_PROFILE = "4624023B-4A88-45D0-A2E9-E763FB110C81";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -731,14 +743,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jinsheng Du (652HK6SNFV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: XUE LI (A8LHWTB34E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinsheng Du (652HK6SNFV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyCollect/MyCollect-Prefix.pch";
 				INFOPLIST_FILE = "MyCollect/MyCollect-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2C5EE626-4525-4CEB-A154-75204CFA9B98";
+				PROVISIONING_PROFILE = "4624023B-4A88-45D0-A2E9-E763FB110C81";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

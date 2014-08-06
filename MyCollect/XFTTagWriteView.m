@@ -10,15 +10,19 @@
 #import "MyLayer.h"
 #import "NSString+CalWidth.h"
 #import "XFTButton.h"
+#import "XFTMenuItem.h"
+#import "XFTMenuController.h"
 @interface XFTTagWriteView()<UITextFieldDelegate,UIScrollViewDelegate>
 @property(nonatomic,strong) UIScrollView *inputScrollView;
 @property(nonatomic,strong) UIScrollView *showTagScrollView;
 @property(nonatomic,strong) UITextField *inputTextField;
 @property (nonatomic, strong) UIButton *deleteButton;
-@property(nonatomic,strong)NSMutableArray *inputTagArray;
 @property(nonatomic,strong)NSMutableArray *tagMadeArray;
 @property(nonatomic,strong)NSMutableArray *tagViews;
 @property(nonatomic,strong)NSMutableArray *myTagViews;
+@property(nonatomic,strong)XFTMenuController *deleteMenuController;
+@property(nonatomic,strong)XFTMenuItem *deleteMenuItem;
+@property(nonatomic,assign)BOOL isSelected;
 @end
 @implementation XFTTagWriteView
 
@@ -75,10 +79,10 @@
         myTagLabel.textColor = [UIColor colorWithRed:0.647 green:0.675 blue:0.698 alpha:1];
         [self.showTagScrollView addSubview:myTagLabel];
         
-        
     }
     return self;
 }
+
 - (void)showKeyBoard:(BOOL)isShow
 {
     if(isShow)
@@ -98,6 +102,66 @@
     {
         [self showKeyBoard:NO];
     }
+}
+- (void)tagbtnPress:(XFTButton*)btn
+{
+    NSLog(@"点击了标签");
+    if(!self.deleteMenuController)
+    {
+        self.deleteMenuController = [[XFTMenuController alloc] init];
+        
+        self.deleteMenuItem = [[XFTMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteMenuItemClick:)];
+        
+        self.deleteMenuController.menuItems = @[self.deleteMenuItem];
+    
+    }
+    [self.deleteMenuController setTargetRect:btn.bounds inView:btn];
+     self.deleteMenuController.tag = btn.tag;
+    
+    for(XFTButton *btn1 in self.tagViews)
+    {
+        if(btn1 != btn)
+        {
+            [self resetButton:btn1 isSelect:NO];
+        }
+    }
+    if(btn.select)
+    {
+        
+        [self resetButton:btn isSelect:NO];
+        [self.deleteMenuController setMenuVisible:NO animated:YES];
+    }
+    else
+    {
+        [btn becomeFirstResponder];
+        [self resetButton:btn isSelect:YES];
+        [self.deleteMenuController setMenuVisible:YES animated:YES];
+       
+    }
+    
+}
+
+-(void)resetButton:(XFTButton*)btn isSelect:(BOOL)isSelect
+{
+    if(isSelect)
+    {
+        btn.select = YES;
+//        btn setBackgroundColor:<#(UIColor *)#>
+    }
+    else
+    {
+        btn.select = NO;
+        UIImage * image = [[UIImage imageNamed:@"Fav_Green_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        UIImage * image_HL = [[UIImage imageNamed:@"Fav_Green_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        [btn setBackgroundImage:image forState:UIControlStateNormal];
+        [btn setBackgroundImage:image_HL forState:UIControlStateHighlighted];
+    }
+}
+
+- (void)deleteMenuItemClick:(XFTMenuController*)menuController
+{
+    NSLog(@"deleteIndex:%d",menuController.tag);
+    [self deleteTag:[self.inputTagArray objectAtIndex:menuController.tag]];
 }
 //动态创建标签按钮
 - (void)updateTag:(NSArray *)tags
@@ -125,6 +189,7 @@
                 }
             }
             XFTButton *tagBtn = [XFTButton buttonWithType:UIButtonTypeCustom];
+            [tagBtn addTarget:self action:@selector(tagbtnPress:) forControlEvents:UIControlEventTouchUpInside];
             UIImage * image = [[UIImage imageNamed:@"Fav_Green_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
             UIImage * image_HL = [[UIImage imageNamed:@"Fav_Green_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
             [tagBtn setBackgroundImage:image forState:UIControlStateNormal];
@@ -135,6 +200,8 @@
             [tagBtn setTitleColor:self.tagForegroundColor forState:UIControlStateNormal];
             [self.inputScrollView addSubview:tagBtn];
             [self.tagViews addObject:tagBtn];
+            NSInteger index = [self.tagViews indexOfObject:tagBtn];
+            tagBtn.tag = index;
             [self.inputTagArray addObject:tag];
             NSLog(@"%@",tag);
             [self layoutInputAndScroll];
@@ -144,19 +211,23 @@
 
 - (void)layoutInputAndScroll
 {
-    
     XFTButton *btn = [self.tagViews lastObject];
     CGRect fram = self.inputTextField.frame;
     CGFloat x = btn.frame.origin.x + btn.frame.size.width + 15;
     CGFloat y = btn.frame.origin.y;
-    if(x + 80 > MainSreenWidth-15)
+    if(85 > MainSreenWidth - x )
     {
         x = 15;
         y += 35;
     }
+    if(!btn)
+    {
+        x = 15;
+        y = 12.5;
+    }
     fram.origin = CGPointMake(x, y);
     self.inputTextField.frame = fram;
-    self.inputTextField.text = nil;
+    self.inputTextField.text = @"";
     [self textFieldStartChange:nil];
     [self setScrollOffsetToShowInputView];
 }
@@ -219,7 +290,6 @@
     }
     textField.text = nil;
     [self textFieldStartChange:nil];
-    
     return YES;
 }
 - (void)removeNotication:(NSString *)name
@@ -228,7 +298,7 @@
 }
 - (void)textFieldStartChange:(NSNotification*)info
 {
-    
+    NSLog(@"删除");
     if(self.inputTextField.text.length > 18)//字符数字超过18个
     {
         NSLog(@"标签最多支持18个字，已超过%d字",self.inputTextField.text.length-18);
@@ -258,10 +328,21 @@
     {
         [MyLayer RoundedWithBorder:self.inputTextField cornerRadius:12.5 borderWidth:0.5 borderColor:[UIColor lightGrayColor] masksToBounds:YES];
     }
-    if(self.tagViews.count > 0)
+    if(self.tagViews.count > 0 )
     {
         XFTButton *lastBtn = [self.tagViews lastObject];
-        
+        if(width ==30)
+        {
+            if(85 > MainSreenWidth - (lastBtn.frame.origin.x + lastBtn.frame.size.width + 15))
+            {
+                CGRect frame = self.inputTextField.frame;
+                frame.origin.y = lastBtn.frame.origin.y + 35;
+                frame.origin.x = 15;
+                self.inputTextField.frame = frame;
+                [self setScrollOffsetToShowInputView];
+                return;
+            }
+        }
         if(width + 15 > MainSreenWidth - (lastBtn.frame.origin.x + lastBtn.frame.size.width + 15))
         {
             
@@ -291,11 +372,22 @@
         NSLog(@"不能以空格符开头");
         return NO;
     }
+    NSLog(@"删除%@",textField.text);
+        
+    
     return YES;
 }
-
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    if(textField.text.length == 0)
+    {
+        NSLog(@"删除");
+    }
+    return YES;
+}
 - (void)updateMyTagView:(NSArray *)myTags
 {
+    self.myTagArray = myTags;
     if(!self.myTagViews)
     {
         self.myTagViews = [[NSMutableArray alloc] initWithCapacity:0];
@@ -308,7 +400,7 @@
         }
         [self.myTagViews removeAllObjects];
     }
-    CGFloat x = 15,y = 40;
+    CGFloat x = 15,y = 45;
     for(NSString *tag in myTags)
     {
         if(self.myTagViews.count > 0)
@@ -385,25 +477,95 @@
 
 - (void)deleteTag:(NSString*)tag
 {
+    NSInteger index = -1;
+    NSInteger index1 = -1;
     for(NSString *str in self.inputTagArray)
     {
         if([str isEqualToString:tag])
         {
-            NSInteger index = [self.inputTagArray indexOfObject:str];
-            XFTButton *btn = [self.tagViews objectAtIndex:index];
-            [btn removeFromSuperview];
-            [self.inputTagArray removeObjectAtIndex:index];
-            [self.tagViews removeObjectAtIndex:index];
-            [self reLayoutTagsWithIndex:index];
+            index = [self.inputTagArray indexOfObject:str];
             break;
         }
+    }
+    for(NSString *str in self.myTagArray)
+    {
+        if([str isEqualToString:tag])
+        {
+            index1 = [self.myTagArray indexOfObject:str];
+            break;
+        }
+    }
+    NSLog(@"index=%d,index1=%d",index,index1);
+    if(index1 >= 0)
+    {
+        XFTButton *btn = [self.myTagViews objectAtIndex:index1];
+        UIImage *image = [[UIImage imageNamed:@"Fav_Gray_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        [btn setBackgroundImage:image forState:UIControlStateNormal];
+        UIImage * image_HL = [[UIImage imageNamed:@"Fav_Gray_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        [btn setBackgroundImage:image_HL forState:UIControlStateHighlighted];
+        [btn setTitleColor:self.myTagColor forState:UIControlStateNormal];
+        btn.select = NO;
+    }
+    if(index >= 0)
+    {
+        [self.inputTagArray removeObjectAtIndex:index];
+        [self reLayoutTags:self.inputTagArray];
+        NSLog(@"%d",self.inputTagArray.count);
     }
     
     
 }
-- (void)reLayoutTagsWithIndex:(NSInteger)index
+- (void)reLayoutTags:(NSArray*)tags
 {
-    
+    if(self.tagViews.count > 0)
+    {
+        for(XFTButton *btn in self.tagViews)
+        {
+            [btn removeFromSuperview];
+        }
+        [self.tagViews removeAllObjects];
+        
+        CGFloat tag_X = 15,tag_Y = 10;
+        for(NSString *tag in tags)
+        {
+            if(self.tagViews.count > 0)
+            {
+                XFTButton *tagBtn = [self.tagViews lastObject];
+                tag_X = tagBtn.frame.origin.x + tagBtn.frame.size.width + 7.5;
+                if(tag_X + [tag calculateWidthForFont:self.font]+20 > MainSreenWidth - 15)
+                {
+                    tag_Y = tagBtn.frame.origin.y + tagBtn.frame.size.height + 10;
+                    tag_X = 15;
+                }
+            }
+            XFTButton *tagBtn = [XFTButton buttonWithType:UIButtonTypeCustom];
+            [tagBtn addTarget:self action:@selector(tagbtnPress:) forControlEvents:UIControlEventTouchUpInside];
+            UIImage * image = [[UIImage imageNamed:@"Fav_Green_Tab"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            UIImage * image_HL = [[UIImage imageNamed:@"Fav_Green_TabHL"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            [tagBtn setBackgroundImage:image forState:UIControlStateNormal];
+            [tagBtn setBackgroundImage:image_HL forState:UIControlStateHighlighted];
+            tagBtn.titleLabel.font = self.font;
+            tagBtn.frame = CGRectMake(tag_X, tag_Y, [tag calculateWidthForFont:self.font]+20, 25);
+            [tagBtn setTitle:tag forState:UIControlStateNormal];
+            [tagBtn setTitleColor:self.tagForegroundColor forState:UIControlStateNormal];
+            [self.inputScrollView addSubview:tagBtn];
+            [self.tagViews addObject:tagBtn];
+            NSInteger index = [self.tagViews indexOfObject:tagBtn];
+            tagBtn.tag = index;
+            NSLog(@"%@",tag);
+            
+        }
+        NSLog(@"btns=%d",self.tagViews.count);
+        [self layoutInputAndScroll];
+    }
+}
+- (void)deleteTag
+{
+    if(self.tagViews.count > 0)
+    {
+        NSString *lastTag = [self.inputTagArray lastObject];
+        [self deleteTag:lastTag];
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -17,6 +17,7 @@
 @property(nonatomic,strong)UIFont  *font;
 @property(nonatomic,strong)NSArray *collectTagArray;
 @property(nonatomic,strong)NSArray *myTagArray;
+@property(nonatomic,strong)NSMutableArray *inputTagArray;
 - (void)removeNotication:(NSString*)name;
 - (void)showKeyBoard:(BOOL)isShow;
 - (void)updateTag:(NSArray *)tags;
