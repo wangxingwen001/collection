@@ -56,7 +56,7 @@
     
     
     self.tagWriteView = [[XFTTagWriteView alloc] initWithFrame:CGRectMake(0, navigationView.frame.size.height, MainSreenWidth, MainSreenHeight-navigationView.frame.size.height)];
-    self.tagWriteView.font = [UIFont systemFontOfSize:15];
+    self.tagWriteView.font = [UIFont systemFontOfSize:13];
     self.tagWriteView.tagForegroundColor = [UIColor colorWithRed:0.059 green:0.741 blue:0.008 alpha:1];
     self.tagWriteView.tagBackgroundColor = [UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:1];
     self.tagWriteView.myTagColor = [UIColor blackColor];
