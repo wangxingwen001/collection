@@ -90,11 +90,15 @@
         myTagLabel.textColor = [UIColor colorWithRed:0.647 green:0.675 blue:0.698 alpha:1];
         [self.showTagScrollView addSubview:myTagLabel];
         
-        self.deleteMenuController = [[XFTMenuController alloc] init];
+        if(!self.deleteMenuController)
+        {
+            self.deleteMenuController = [[XFTMenuController alloc] init];
+            
+            self.deleteMenuItem = [[XFTMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteMenuItemClick:)];
+            self.deleteMenuController.menuItems = nil;
+            self.deleteMenuController.menuItems = @[self.deleteMenuItem];
+        }
         
-        self.deleteMenuItem = [[XFTMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteMenuItemClick:)];
-        self.deleteMenuController.menuItems = nil;
-        self.deleteMenuController.menuItems = @[self.deleteMenuItem];
     }
     return self;
 }
@@ -510,7 +514,14 @@
     {
         [self resetMyTagButton:btn isDelete:YES];
     }
-
+    for(XFTButton *btn in self.tagViews)
+    {
+        if(btn.select)
+        {
+            [self resetButton:btn isSelect:NO];
+        }
+    }
+    
 }
 
 - (void)deleteTag:(NSString*)tag
