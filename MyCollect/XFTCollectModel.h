@@ -16,4 +16,6 @@
 @property(nonatomic,strong)NSString *imageUrl;
 @property(nonatomic,strong)NSString *collectTime;
 @property(nonatomic,strong)NSMutableArray *imageArray;
+@property(nonatomic,strong)NSArray*collectTagArray;
+@property(nonatomic,strong)NSArray *myTagArray;
 @end

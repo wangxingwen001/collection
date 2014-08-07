@@ -7,7 +7,7 @@
 //
 
 #import "XFTVoiceViewController.h"
-
+#import "XFTAddTagViewController.h"
 @interface XFTVoiceViewController ()
 @property(nonatomic,strong) UIProgressView *progressView;
 @property(nonatomic,strong) NSTimer *timer;
@@ -17,6 +17,8 @@
 @property(nonatomic,strong) XFTCustomLabel *nickNameLabel;
 @property(nonatomic,strong) XFTCustomLabel *collectTimeLabel;
 @property(nonatomic,assign)NSInteger voiceTimer;
+@property(nonatomic,strong) XFTAddTagViewController *addTagViewController;
+@property(nonatomic,strong) UIView *playerView;
 @end
 
 @implementation XFTVoiceViewController
@@ -32,13 +34,25 @@
 
 - (void)updateViewWithCollectModel:(XFTCollectModel *)collectModel
 {
+    [super updateViewWithCollectModel:collectModel];
+    
     UIButton *button = (UIButton*)[self.view viewWithTag:100];
     [button setImage:[UIImage imageNamed:@"Fav_detail_voice_play"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"Fav_detail_voice_playHL"] forState:UIControlStateHighlighted];
-    self.headImageView.image = [UIImage imageNamed:collectModel.headImageUrl];
-    self.nickNameLabel.text = collectModel.nickName;
+    
+    
+    CGFloat playerView_Y = self.separatorLineView.frame.origin.y + 44;
+    
+    CGRect frame = self.playerView.frame;
+    frame.origin.y = playerView_Y ;
+    self.playerView.frame = frame;
+    
+    frame = self.collectTimeLabel.frame;
+    
+    frame.origin.y = self.playerView.frame.origin.y + self.playerView.frame.size.height + 25;
+    self.collectTimeLabel.frame = frame;
+    
     self.playTimeLabel.text = @"0:15";
-    self.collectTimeLabel.text = collectModel.collectTime;
     self.voiceTimer = 15;
     self.progressView.progress = 0;
 }
@@ -47,43 +61,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
-    self.navigationItem.title = @"详情";
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - (IOS7_OR_LATER?64:44))];
-    scrollView.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
-    scrollView.contentSize = CGSizeMake(MainSreenWidth, MainSreenHeight-44);
-    scrollView.scrollEnabled = YES;
-    [self.view addSubview:scrollView];
+    CGFloat playerView_Y = self.separatorLineView.frame.origin.y + 44;
     
-    
-    
-    //分割线
-    UIView *separatorView1 = [[UIView alloc] initWithFrame:CGRectMake(15, 0, 290, 0.5)];
-    separatorView1.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1];
-    [scrollView addSubview:separatorView1];
-    
-    self.headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 40, 40)];
-    [scrollView addSubview:self.headImageView];
-    
-    self.nickNameLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(62.5, 15, MainSreenWidth-75, 20) TextFont:15 textColor:[UIColor blackColor] textAliment:NSTextAlignmentLeft text:nil backGroundColor:[UIColor clearColor]];
-    [scrollView addSubview:self.nickNameLabel];
-    
-    UIButton *tagButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [tagButton setFrame:CGRectMake(5, 61, 40, 40)];
-    [tagButton setImage:[UIImage imageNamed:@"location_tag_icon"] forState:UIControlStateNormal];
-    [tagButton addTarget:self action:@selector(tapAddTag) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:tagButton];
-    
-    XFTCustomLabel *tapLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(40, 75.5, 60, 10) TextFont:10 textColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:@"轻触添加标签" backGroundColor:[UIColor clearColor]];
-    [scrollView addSubview:tapLabel];
-    
-    UIView *separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(15, 97, MainSreenWidth-30, 1.0)];
-    [separatorLineView setBackgroundColor:[UIColor colorWithRed:209.0/255.0 green:209.0/255.0 blue:209.0/255.0 alpha:1]];
-    [scrollView addSubview:separatorLineView];
-    
-    UIView *playerView = [[UIView alloc] initWithFrame:CGRectMake(0, 140, MainSreenWidth, 50)];
-    playerView.backgroundColor = [UIColor whiteColor];
-    [scrollView addSubview:playerView];
+    self.playerView = [[UIView alloc] initWithFrame:CGRectMake(0, playerView_Y, MainSreenWidth, 50)];
+    self.playerView.backgroundColor = [UIColor whiteColor];
+    [self.scrollView addSubview:self.playerView];
     
     UIButton *playButton = [UIButton buttonWithType:UIButtonTypeCustom];
     playButton.tag = 100;
@@ -91,22 +73,17 @@
     [playButton setImage:[UIImage imageNamed:@"Fav_detail_voice_playHL"] forState:UIControlStateHighlighted];
     playButton.frame = CGRectMake(22, 9, 32, 32);
     [playButton addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [playerView addSubview:playButton];
+    [self.playerView addSubview:playButton];
     
     self.playTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(54, 15, 42, 20) TextFont:13 textColor:[UIColor grayColor] textAliment:NSTextAlignmentCenter text:nil backGroundColor:[UIColor clearColor]];
-    [playerView addSubview:self.playTimeLabel];
+    [self.playerView addSubview:self.playTimeLabel];
     
     self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(96, 23, MainSreenWidth-111, 4)];
     if(IOS7_OR_LATER)
     self.progressView.tintColor = [UIColor colorWithRed:0.098 green:0.725 blue:0.196 alpha:1];
     self.progressView.progress = 0;
-    [playerView addSubview:self.progressView];
-    
-    
-    self.collectTimeLabel = [[XFTCustomLabel alloc] initWithFrame:CGRectMake(15, 215, 100, 10) TextFont:10 textColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1] textAliment:NSTextAlignmentLeft text:nil backGroundColor:[UIColor clearColor]];
-    [scrollView addSubview:self.collectTimeLabel];
-    
-    [self updateViewWithCollectModel:self.collectModel];
+    [self.playerView addSubview:self.progressView];
+
 }
 
 - (void)pressBtn:(UIButton *)button
@@ -149,11 +126,17 @@
     self.voiceTimer --;
 }
 
-#pragma mark 添加标签
-- (void)tapAddTag
+
+- (void)tagEditFinished:(NSArray *)tagArray
 {
-    
+    for(NSString *tag in tagArray)
+    {
+        NSLog(@"%@",tag);
+    }
+    self.collectModel.collectTagArray = tagArray;
+    [self updateViewWithCollectModel:self.collectModel];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

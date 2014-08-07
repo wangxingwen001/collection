@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "XFTCollectModel.h"
-@interface XFTTextViewController : UIViewController
+#import "XFTSuperViewController.h"
+@interface XFTTextViewController : XFTSuperViewController
 @property(nonatomic,strong)XFTCollectModel *collectModel;
 - (void)updateViewWithCollectModel:(XFTCollectModel *)collectModel;
 @end

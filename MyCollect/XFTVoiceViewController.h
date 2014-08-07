@@ -8,7 +8,7 @@
 
 
 
-@interface XFTVoiceViewController : UIViewController
+@interface XFTVoiceViewController : XFTSuperViewController
 @property(nonatomic,strong)XFTCollectModel *collectModel;
 - (void)updateViewWithCollectModel:(XFTCollectModel *)collectModel;
 @end

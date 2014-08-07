@@ -38,4 +38,10 @@ typedef NS_ENUM(NSInteger, XFTCollectionType)
 //图片间距
 #define PICTURE_SEPARATOR 7
 
+#define TAG_COLOR_GREEN [UIColor colorWithRed:0.059 green:0.741 blue:0.008 alpha:1]
+#define TAG_COLOR_GRAY [UIColor colorWithRed:0.875 green:0.875 blue:0.867 alpha:1]
+#define TITLE_COLOR [UIColor colorWithRed:0.239 green:0.239 blue:0.239 alpha:1]
+#define PLACEHOLDER_COLOR [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1]
+
+
 #endif

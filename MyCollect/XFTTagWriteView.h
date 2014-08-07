@@ -20,7 +20,7 @@
 @property(nonatomic,strong)NSMutableArray *inputTagArray;
 - (void)removeNotication:(NSString*)name;
 - (void)showKeyBoard:(BOOL)isShow;
-- (void)updateTag:(NSArray *)tags;
+- (void)updateThisCollectTags:(NSArray *)tags;
 - (void)updateMyTagView:(NSArray *)myTags;
 @end
 

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "XFTCollectModel.h"
+#import "XFTCustomLabel.h"
 @interface XFTSuperViewController : UIViewController
-
+@property(nonatomic,strong) UIScrollView *scrollView;
+@property(nonatomic,strong) XFTCollectModel *collectModel;
+@property(nonatomic,strong) UIView *separatorLineView;
+@property(nonatomic,strong) XFTCustomLabel *collectTimeLabel;
+- (void)tapAddTag;
+- (void)updateViewWithCollectModel:(XFTCollectModel *)collectModel;
 @end

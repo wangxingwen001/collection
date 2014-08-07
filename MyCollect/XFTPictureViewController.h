@@ -7,7 +7,7 @@
 //
 
 
-@interface XFTPictureViewController : UIViewController
+@interface XFTPictureViewController : XFTSuperViewController
 @property(nonatomic,strong)XFTCollectModel *collectModel;
 - (void)updateViewWithCollectModel:(XFTCollectModel *)collectModel;
 @end

@@ -21,11 +21,7 @@
 #import "XFTMapViewController.h"
 @interface XFTMyCollectViewController ()<UITableViewDataSource,UITableViewDelegate,DNSSwipeableCellDataSource,DNSSwipeableCellDelegate>
 {
-    XFTTextViewController * _textVC;
-    XFTVoiceViewController *_voiceVC;
-    XFTVideoViewController *_videoVC;
-    XFTPictureViewController * _pictureVC;
-    XFTMapViewController * _mapVC;
+   
     
 }
 @property(nonatomic,strong)UITableView *myCollecttableView;
@@ -37,7 +33,11 @@
 @property (nonatomic, strong) NSArray *imageNames;
 @property(nonatomic,assign)BOOL isOpen;
 @property(nonatomic,strong)NSIndexPath *indexPath;
-
+@property(nonatomic,strong)XFTTextViewController * textViewController;
+@property(nonatomic,strong)XFTVoiceViewController * voiceViewController;
+@property(nonatomic,strong)XFTVideoViewController * videoViewController;
+@property(nonatomic,strong)XFTPictureViewController * pictureViewController;
+@property(nonatomic,strong)XFTMapViewController * mapViewController;
 @end
 
 @implementation XFTMyCollectViewController
@@ -77,6 +77,9 @@
     for (int i = 0; i < 5; i ++) {
         XFTCollectModel *collectModel = [[XFTCollectModel alloc] init];
         collectModel.imageArray = [[NSMutableArray alloc]initWithCapacity:0];
+        collectModel.collectTagArray = @[@"蓝天",@"白云",@"青山",@"绿水"];
+  
+        collectModel.myTagArray = @[@"夕阳",@"西下"];
         for(int i = 0; i < 10;i ++)
         {
             [collectModel.imageArray addObject:[NSString stringWithFormat:@"%d",i]];
@@ -231,52 +234,51 @@
         case 0:
         {
             NSLog(@"文本");
-            if (!_textVC) {
-                _textVC = [[XFTTextViewController alloc] init];
-                _textVC.collectModel = collectModel;
+            if (!self.textViewController) {
+                self.textViewController = [[XFTTextViewController alloc] init];
             }
-            else{
-                [_textVC updateViewWithCollectModel:collectModel];
-            }
-            [self.navigationController pushViewController:_textVC animated:YES];
+            
+            [self.textViewController updateViewWithCollectModel:collectModel];
+            
+            
+            [self.navigationController pushViewController:self.textViewController animated:YES];
         }
             break;
         case 1:
         {
             NSLog(@"声音");
-            if(!_voiceVC)
+            if(!self.voiceViewController)
             {
-                _voiceVC = [[XFTVoiceViewController alloc] init];
-                _voiceVC.collectModel = collectModel;
+                self.voiceViewController = [[XFTVoiceViewController alloc] init];
             }
-            else
-            {
-                [_voiceVC updateViewWithCollectModel:collectModel];
-            }
-            [self.navigationController pushViewController:_voiceVC animated:YES];
+                [self.voiceViewController updateViewWithCollectModel:collectModel];
+            
+            
+            [self.navigationController pushViewController:self.voiceViewController animated:YES];
         }
             break;
         case 2:
         {
             NSLog(@"视频");
-            XFTVideoViewController *videoViewController = [[XFTVideoViewController alloc] init];
-            [self.navigationController pushViewController:videoViewController animated:YES];
+            if(!self.videoViewController)
+            {
+                self.videoViewController = [[XFTVideoViewController alloc] init];
+            }
+            [self.navigationController pushViewController:self.videoViewController animated:YES];
             
         }
             break;
         case 3:
         {
             NSLog(@"图片");
-            if(!_pictureVC)
+            if(!self.pictureViewController)
             {
-                _pictureVC = [[XFTPictureViewController alloc] init];
-                _pictureVC.collectModel = collectModel;
+                self.pictureViewController = [[XFTPictureViewController alloc] init];
             }
-            else
-            {
-                [_pictureVC updateViewWithCollectModel:collectModel];
-            }
-            [self.navigationController pushViewController:_pictureVC animated:YES];
+                [self.pictureViewController updateViewWithCollectModel:collectModel];
+            
+            
+            [self.navigationController pushViewController:self.pictureViewController animated:YES];
         }
             break;
         case 4:
@@ -292,7 +294,6 @@
         default:
             break;
     }
-    
     
 }
 
