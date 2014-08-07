@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "XFTMyCollectViewController.h"
+#import "RootViewController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -15,13 +16,16 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    XFTMyCollectViewController *myCollectViewController = [[XFTMyCollectViewController alloc] init];
+//    XFTMyCollectViewController *myCollectViewController = [[XFTMyCollectViewController alloc] init];
+//    
+//    myCollectViewController.navigationItem.title = @"我的收藏";
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myCollectViewController];
+//    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:NAVIGATION_IMAGE] forBarMetrics:UIBarMetricsDefault];
+//    [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],[[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0?NSForegroundColorAttributeName:UITextAttributeTextColor, nil]];
+//    self.window.rootViewController = nav;
+    RootViewController *root = [[RootViewController alloc] init];
+    self.window.rootViewController = root;
     
-    myCollectViewController.navigationItem.title = @"我的收藏";
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:myCollectViewController];
-    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:NAVIGATION_IMAGE] forBarMetrics:UIBarMetricsDefault];
-    [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],[[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0?NSForegroundColorAttributeName:UITextAttributeTextColor, nil]];
-    self.window.rootViewController = nav;
     self.window.backgroundColor = [UIColor whiteColor];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
     [self.window makeKeyAndVisible];

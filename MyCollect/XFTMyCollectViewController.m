@@ -19,11 +19,9 @@
 #import "XFTVideoViewController.h"
 #import "XFTPictureViewController.h"
 #import "XFTMapViewController.h"
-@interface XFTMyCollectViewController ()<UITableViewDataSource,UITableViewDelegate,DNSSwipeableCellDataSource,DNSSwipeableCellDelegate>
-{
-   
-    
-}
+
+@interface XFTMyCollectViewController ()<UITableViewDataSource,UITableViewDelegate,DNSSwipeableCellDataSource,DNSSwipeableCellDelegate,UISearchBarDelegate>
+
 @property(nonatomic,strong)UITableView *myCollecttableView;
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *cellsCurrentlyEditing;
@@ -38,6 +36,9 @@
 @property(nonatomic,strong)XFTVideoViewController * videoViewController;
 @property(nonatomic,strong)XFTPictureViewController * pictureViewController;
 @property(nonatomic,strong)XFTMapViewController * mapViewController;
+@property(nonatomic,strong)UIButton *cancelButton;
+@property(nonatomic,strong)UISearchBar *searchBar;
+@property(nonatomic,strong)UISearchDisplayController *searchDC;
 @end
 
 @implementation XFTMyCollectViewController
@@ -50,8 +51,9 @@
     }
     return self;
 }
-- (void)startEdit:(UIBarButtonItem*)barButtonItem
+- (void)startEdit:(UIButton*)btn
 {
+    [self.searchDC setActive:NO animated:YES];
     NSLog(@"开始编辑");
 }
 - (void)viewDidLoad
@@ -70,6 +72,32 @@
     self.myCollecttableView.dataSource = self;
     self.myCollecttableView.backgroundColor = [UIColor clearColor];
     self.myCollecttableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, MainSreenWidth, 44)];
+    self.searchBar.delegate = self;
+    self.searchBar.placeholder = @"搜索";
+    self.searchBar.showsCancelButton = YES;
+    
+//    self.searchDC = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    
+    
+    UIView *topView = self.searchBar.subviews[0];
+    for(UIView *subView in topView.subviews)
+    {
+        if([subView isKindOfClass:NSClassFromString(@"UINavigationButton")])
+        {
+            self.cancelButton = (UIButton*)subView;
+            
+        }
+    }
+    if(self.cancelButton)
+    {
+        [self.cancelButton setTitle:@"编辑" forState:UIControlStateNormal];
+        [self.cancelButton setTitleColor:TAG_COLOR_GREEN forState:UIControlStateNormal];
+        self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:15];
+        [self.cancelButton addTarget:self action:@selector(startEdit:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    [self.myCollecttableView setTableHeaderView:self.searchBar];
     
     self.myCollecttableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.myCollecttableView];
@@ -94,6 +122,15 @@
         [self.dataArray addObject:collectModel];
     }
     self.cellsCurrentlyEditing = [[NSMutableArray alloc] initWithCapacity:0];
+}
+
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    self.searchBar.showsCancelButton = YES;
+}
+- (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
+{
+    self.searchBar.showsCancelButton =YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -297,6 +334,19 @@
     
 }
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar{
+    
+    [self.searchBar resignFirstResponder];
+    
+    if(IOS7_OR_LATER)
+        self.searchBar.showsCancelButton = YES;
+    else
+        nil;
+    self.searchBar.text=nil;
+
+    
+    
+}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
