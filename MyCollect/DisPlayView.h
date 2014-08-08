@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol DisPlayViewDelegate<NSObject>
+- (void)disPlayButtonClick:(UIButton*)btn;
+- (void)tagBtnClick:(UIButton*)btn;
+@end
 @interface DisPlayView : UIView
+@property(nonatomic,assign)id <DisPlayViewDelegate> delegate;
 - (id)initWithFrame:(CGRect)frame;
 @end

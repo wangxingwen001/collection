@@ -12,7 +12,6 @@
 @property(nonatomic,strong) UIImageView *headImageView;
 @property(nonatomic,strong) XFTCustomLabel *nickNameLabel;
 @property(nonatomic,strong) XFTCustomLabel *tapLabel;
-@property(nonatomic,strong) XFTAddTagViewController *addTagViewController;
 
 @end
 
@@ -134,17 +133,12 @@
 }
 - (void)tapAddTag
 {
-    if(!self.addTagViewController)
-    {
-        self.addTagViewController = [[XFTAddTagViewController alloc] init];
-        self.addTagViewController.collectModel = self.collectModel;
-    }
-    else
-    {
-        [self.addTagViewController updateTagViewWithCollectModel:self.collectModel];
-    }
-    self.addTagViewController.delegate = self;
-    [self presentViewController:self.addTagViewController animated:YES completion:nil];
+
+    XFTAddTagViewController *addTagViewController = [[XFTAddTagViewController alloc] init];
+    addTagViewController.collectModel = self.collectModel;
+
+    addTagViewController.delegate = self;
+    [self presentViewController:addTagViewController animated:YES completion:nil];
 }
 
 

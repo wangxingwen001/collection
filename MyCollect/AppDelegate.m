@@ -23,6 +23,7 @@
 //    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:NAVIGATION_IMAGE] forBarMetrics:UIBarMetricsDefault];
 //    [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],[[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0?NSForegroundColorAttributeName:UITextAttributeTextColor, nil]];
 //    self.window.rootViewController = nav;
+    
     RootViewController *root = [[RootViewController alloc] init];
     self.window.rootViewController = root;
     

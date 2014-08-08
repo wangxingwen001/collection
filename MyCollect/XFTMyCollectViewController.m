@@ -53,7 +53,9 @@
 }
 - (void)startEdit:(UIButton*)btn
 {
-    [self.searchDC setActive:NO animated:YES];
+    [self.searchBar resignFirstResponder];
+    self.myCollecttableView.tableHeaderView = nil;
+    self.searchBar.hidden = YES;
     NSLog(@"开始编辑");
 }
 - (void)viewDidLoad
@@ -334,19 +336,6 @@
     
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar{
-    
-    [self.searchBar resignFirstResponder];
-    
-    if(IOS7_OR_LATER)
-        self.searchBar.showsCancelButton = YES;
-    else
-        nil;
-    self.searchBar.text=nil;
-
-    
-    
-}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {

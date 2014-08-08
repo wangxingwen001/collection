@@ -36,12 +36,14 @@ static XFTMenuController *deleteMenuController = nil;
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
+        
         self.inputTagArray = [[NSMutableArray alloc] initWithCapacity:0];
         
         self.tagMadeArray = [[NSMutableArray alloc] initWithCapacity:self.collectTagArray.count];
         
         
-        self.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.961 alpha:1];
+        
         self.inputScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MainSreenWidth, 50)];
         self.inputScrollView.tag = 10;
         self.inputScrollView.backgroundColor = [UIColor whiteColor];
@@ -52,7 +54,7 @@ static XFTMenuController *deleteMenuController = nil;
         
         [self addSubview:self.inputScrollView];
  
-        self.inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, 12.5, 80, 25)];
+        self.inputTextView = [[UITextView alloc] initWithFrame:CGRectMake(15, 9, 80, 25)];
         self.inputTextView.backgroundColor = [UIColor whiteColor];
         self.inputTextView.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.inputTextView.font = self.font;
@@ -60,7 +62,10 @@ static XFTMenuController *deleteMenuController = nil;
         self.inputTextView.returnKeyType = UIReturnKeyDone;
         [self.inputScrollView addSubview:self.inputTextView];
         
-        self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 7.5, 80, 15)];
+         [self.inputTextView
+          addObserver:self forKeyPath:@"contentSize" options:(NSKeyValueObservingOptionNew) context:NULL];
+        
+        self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 7.5, 80, 15)];
         self.placeholderLabel.text = @"添加标签";
         self.placeholderLabel.textColor = PLACEHOLDER_COLOR;
         self.placeholderLabel.font = [UIFont systemFontOfSize:13];
@@ -99,7 +104,21 @@ static XFTMenuController *deleteMenuController = nil;
     }
     return self;
 }
-
+#pragma mark - KVO
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    UITextView *tv = object;
+    // Center vertical alignment
+    CGFloat topCorrect = ([tv bounds].size.height - [tv contentSize].height * [tv zoomScale])/2.0;
+    topCorrect = ( topCorrect < 0.0 ? 0.0 : topCorrect );
+    tv.contentOffset = (CGPoint){.x = 0, .y = -topCorrect};
+    
+    //    // Bottom vertical alignment
+    //    CGFloat topCorrect = ([tv bounds].size.height - [tv contentSize].height);
+    //    topCorrect = (topCorrect <0.0 ? 0.0 : topCorrect);
+    //    tv.contentOffset = (CGPoint){.x = 0, .y = -topCorrect};
+    
+}
 - (void)showKeyBoard:(BOOL)isShow
 {
     if(isShow)
@@ -296,7 +315,7 @@ static XFTMenuController *deleteMenuController = nil;
     XFTButton *btn = [self.tagViews lastObject];
     CGRect fram = self.inputTextView.frame;
     CGFloat x = btn.frame.origin.x + btn.frame.size.width + 15;
-    CGFloat y = btn.frame.origin.y;
+    CGFloat y = btn.frame.origin.y-3.5;
     if(85 > MainSreenWidth - x )
     {
         x = 15;

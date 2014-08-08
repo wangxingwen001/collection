@@ -17,6 +17,5 @@
     view.layer.masksToBounds = myMasksToBounds;
     view.layer.borderWidth = myBorderWidth;
     view.layer.borderColor = [myBorderColor CGColor];
-    view.clipsToBounds = YES;
 }
 @end

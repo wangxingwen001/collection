@@ -50,7 +50,7 @@
     rightButton.frame = CGRectMake(MainSreenWidth-49, navigationView.frame.size.height-40, 44, 44);
     rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:17];
     [rightButton setTitle:@"完成" forState:UIControlStateNormal];
-    [rightButton setTitleColor:[UIColor colorWithRed:0.059 green:0.741 blue:0.008 alpha:1] forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     rightButton.userInteractionEnabled = YES;
     [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:rightButton];
@@ -61,6 +61,7 @@
     self.tagWriteView.tagBackgroundColor = [UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:1];
     self.tagWriteView.myTagColor = [UIColor blackColor];
     [self.view addSubview:self.tagWriteView];
+    
     [self updateTagViewWithCollectModel:self.collectModel];
     
 }
